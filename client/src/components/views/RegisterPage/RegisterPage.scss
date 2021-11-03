@@ -1,0 +1,69 @@
+$bodyColor: #212121;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $bodyColor;
+  color: white;
+}
+
+.title {
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.title::before,
+.title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.title::before {
+  background: $bodyColor;
+  animation: typewriter 4s steps(47) 1s forwards;
+}
+
+.title::after {
+  width: 0.125em;
+  background: white;
+  animation: typewriter 4s steps(47) 1s forwards, blink 500ms steps(24) infinite;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 2s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
