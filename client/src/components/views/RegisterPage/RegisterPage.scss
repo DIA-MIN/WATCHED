@@ -47,13 +47,13 @@ button {
 
 .title::before {
   background: $bodyColor;
-  animation: typewriter 4s steps(47) 1s forwards;
+  animation: typewriter 3s steps(47) 1s forwards;
 }
 
 .title::after {
   width: 0.125em;
   background: white;
-  animation: typewriter 4s steps(47) 1s forwards, blink 500ms steps(24) infinite;
+  animation: typewriter 3s steps(47) 1s forwards, blink 750ms infinite;
 }
 
 @keyframes typewriter {
@@ -93,7 +93,7 @@ button {
   label {
     font-weight: bold;
     color: $mainColor;
-    padding: 1rem 0;
+    padding: 1.25rem 0;
   }
 
   div {
@@ -116,5 +116,17 @@ button {
         color: $bodyColor;
       }
     }
+  }
+}
+
+.registerBtn {
+  margin-top: 5rem;
+  font-size: 1.25rem;
+  align-self: center;
+  transition: 300ms ease-in;
+
+  &:hover {
+    color: $mainColor;
+    transform: scale(1.2);
   }
 }
