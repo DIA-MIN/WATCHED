@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Button, message} from 'antd';
 import './RegisterPage.scss';
 
 function RegisterPage() {
@@ -22,15 +23,31 @@ function RegisterPage() {
   };
 
   const onEmailCheck = () => {
-    setEmailCheck(true);
+    if (Email === '') {
+      alert('이메일을 다시 한번 확인해주세요.');
+    } else {
+      setEmailCheck(true);
+    }
   };
 
   const onNameCheck = () => {
-    setNameCheck(true);
+    if (Name === '') {
+      alert('이름을 다시 한번 확인해주세요.');
+    } else {
+      setNameCheck(true);
+    }
   };
 
   const onPasswordCheck = () => {
-    setPasswordCheck(true);
+    if (Password === '') {
+      alert('비밀번호를 다시 한번 확인해주세요.');
+    } else {
+      setPasswordCheck(true);
+    }
+  };
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
   };
 
   const inputName = (
@@ -65,20 +82,20 @@ function RegisterPage() {
 
   const register = (
     <>
-      <button className="registerBtn" onClick>
+      <button className="registerBtn" onClick={onSubmitForm}>
         Let's go WATCHED
       </button>
     </>
   );
 
   return (
-    <div className="content">
-      <h1 className="title">
+    <div className="registerContent">
+      <h1 className="registerTitle">
         <span>WATCHED</span>에 가입하고 영화를 평가해 보세요.
       </h1>
       <br />
-      <p className="subtitle">Welcome to WATCHED!</p>
-      <form onSubmit>
+      <p className="registerSubtitle">Welcome to WATCHED!</p>
+      <form onSubmit={onSubmitForm}>
         <label>이메일을 입력해주세요.</label>
         <div>
           <label>→</label>

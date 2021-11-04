@@ -16,7 +16,7 @@ button {
   cursor: pointer;
 }
 
-.content {
+.registerContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,17 +26,17 @@ button {
   color: white;
 }
 
-.title {
+.registerTitle {
   font-size: 1.5rem;
   position: relative;
 }
 
-.title span {
+.registerTitle span {
   color: $mainColor;
 }
 
-.title::before,
-.title::after {
+.registerTitle::before,
+.registerTitle::after {
   content: '';
   position: absolute;
   top: 0;
@@ -45,12 +45,12 @@ button {
   left: 0;
 }
 
-.title::before {
+.registerTitle::before {
   background: $bodyColor;
   animation: typewriter 3s steps(47) 1s forwards;
 }
 
-.title::after {
+.registerTitle::after {
   width: 0.125em;
   background: white;
   animation: typewriter 3s steps(47) 1s forwards, blink 750ms infinite;
@@ -68,7 +68,7 @@ button {
   }
 }
 
-.subtitle {
+.registerSubtitle {
   font-size: 1.25rem;
   opacity: 0;
   transform: translateY(3rem);
@@ -82,13 +82,13 @@ button {
   }
 }
 
-.content form {
+.registerContent form {
   margin-top: 5rem;
   display: flex;
   flex-direction: column;
   opacity: 0;
   transform: translateY(3rem);
-  animation: fadeInUp 2s ease 1s forwards;
+  animation: fadeInUp 2s ease 3s forwards;
 
   label {
     font-weight: bold;
