@@ -1,0 +1,21 @@
+$bodyColor: #212121;
+$mainColor: #fdd835;
+$navColor: #616161;
+
+input {
+  all: unset;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $bodyColor;
+}

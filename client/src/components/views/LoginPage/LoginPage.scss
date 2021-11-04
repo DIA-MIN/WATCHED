@@ -1,0 +1,65 @@
+@import '../commons/commons.scss';
+
+.loginContent {
+  @extend .container;
+
+  h1 {
+    border: 3px solid $mainColor;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 3rem;
+    color: $mainColor;
+  }
+
+  p {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  form {
+    background: $navColor;
+    padding: 2rem 3rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 1.25em;
+      font-weight: bold;
+      color: $mainColor;
+      padding: 1.25rem 0 1rem 0;
+    }
+
+    label:first-child {
+      padding-top: 0;
+    }
+
+    input {
+      background: white;
+      width: 300px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid white;
+      text-indent: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: bold;
+      color: $mainColor;
+      background: $bodyColor;
+      text-align: center;
+      margin-top: 2rem;
+      border-radius: 5px;
+      padding: 8px 0;
+      transition: 500ms ease-in;
+
+      &:hover {
+        background-color: $mainColor;
+        color: $bodyColor;
+      }
+    }
+  }
+}

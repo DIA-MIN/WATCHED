@@ -1,28 +1,7 @@
-$bodyColor: #212121;
-$mainColor: #fdd835;
-
-// * {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
-
-input {
-  all: unset;
-}
-
-button {
-  all: unset;
-  cursor: pointer;
-}
+@import '../commons/commons.scss';
 
 .registerContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: $bodyColor;
+  @extend .container;
 }
 
 .registerTitle {
