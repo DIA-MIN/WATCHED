@@ -1,11 +1,11 @@
 $bodyColor: #212121;
 $mainColor: #fdd835;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
 input {
   all: unset;
@@ -23,12 +23,12 @@ button {
   align-items: center;
   min-height: 100vh;
   background-color: $bodyColor;
-  color: white;
 }
 
 .registerTitle {
-  font-size: 1.5rem;
+  font-size: 2rem;
   position: relative;
+  color: white;
 }
 
 .registerTitle span {
@@ -69,10 +69,11 @@ button {
 }
 
 .registerSubtitle {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   opacity: 0;
   transform: translateY(3rem);
   animation: fadeInUp 3s ease forwards;
+  color: white;
 }
 
 @keyframes fadeInUp {
@@ -89,6 +90,8 @@ button {
   opacity: 0;
   transform: translateY(3rem);
   animation: fadeInUp 2s ease 3s forwards;
+  color: white;
+  font-size: 1.25em;
 
   label {
     font-weight: bold;
@@ -121,7 +124,7 @@ button {
 
 .registerBtn {
   margin-top: 5rem;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   align-self: center;
   transition: 300ms ease-in;
 

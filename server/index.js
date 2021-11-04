@@ -20,9 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Router
-// app.use('/api/users', require('./routes/users'));
-
-app.get('/', (req, res) => res.send('hello :)'));
+app.use('/api/users', require('./routes/users'));
 
 const port = process.env.PORT || 5000;
 

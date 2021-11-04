@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {Button, message} from 'antd';
 import './RegisterPage.scss';
+import Axios from 'axios';
+import moment from 'moment';
 
-function RegisterPage() {
+function RegisterPage(props) {
   const [Email, setEmail] = useState('');
   const [Name, setName] = useState('');
   const [Password, setPassword] = useState('');
@@ -24,7 +26,7 @@ function RegisterPage() {
 
   const onEmailCheck = () => {
     if (Email === '') {
-      alert('이메일을 다시 한번 확인해주세요.');
+      message.warn('이메일을 다시 한번 확인해주세요.');
     } else {
       setEmailCheck(true);
     }
@@ -32,7 +34,7 @@ function RegisterPage() {
 
   const onNameCheck = () => {
     if (Name === '') {
-      alert('이름을 다시 한번 확인해주세요.');
+      message.warn('이름을 다시 한번 확인해주세요.');
     } else {
       setNameCheck(true);
     }
@@ -40,7 +42,7 @@ function RegisterPage() {
 
   const onPasswordCheck = () => {
     if (Password === '') {
-      alert('비밀번호를 다시 한번 확인해주세요.');
+      message.warn('비밀번호를 다시 한번 확인해주세요.');
     } else {
       setPasswordCheck(true);
     }
@@ -48,6 +50,22 @@ function RegisterPage() {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+
+    const variables = {
+      email: Email,
+      name: Name,
+      password: Password,
+      image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+    };
+
+    Axios.post('/api/users/register', variables).then((response) => {
+      if (response.data.success) {
+        console.log(response.data);
+        // props.history.push('/login');
+      } else {
+        alert('회원가입에 실패하셨습니다.');
+      }
+    });
   };
 
   const inputName = (
@@ -90,7 +108,7 @@ function RegisterPage() {
 
   return (
     <div className="registerContent">
-      <h1 className="registerTitle">
+      <h1 className="registerTitle" style={{color: 'white'}}>
         <span>WATCHED</span>에 가입하고 영화를 평가해 보세요.
       </h1>
       <br />
