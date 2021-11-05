@@ -63,3 +63,29 @@
     }
   }
 }
+
+@media screen and (max-width: 478px) {
+  .loginContent {
+    h1 {
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+    }
+
+    form {
+      padding: 1rem 1.5rem;
+
+      label,
+      button {
+        font-size: 0.75rem;
+      }
+
+      input {
+        width: 200px;
+      }
+    }
+  }
+}

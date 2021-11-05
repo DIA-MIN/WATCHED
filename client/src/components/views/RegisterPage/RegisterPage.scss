@@ -92,6 +92,7 @@
       border: 1px solid $mainColor;
       border-radius: 5px;
       font-weight: bold;
+      transition: 1000ms ease;
 
       &:hover {
         background: $mainColor;

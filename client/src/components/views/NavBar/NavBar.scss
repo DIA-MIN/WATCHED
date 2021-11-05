@@ -3,15 +3,12 @@
 .navContainer {
   display: flex;
   align-items: center;
-  width: 100%;
   background: $navColor;
-  padding: 10px 6rem;
+  padding: 8px 5rem;
   justify-content: space-between;
-  width: 100%;
 
   .logo {
-    width: 20%;
-    span {
+    a {
       color: $mainColor;
       font-weight: bold;
       font-size: 1rem;
@@ -23,34 +20,17 @@
     }
   }
 
-  .search {
+  .menu {
+    color: white;
     display: flex;
+    position: absolute;
+    right: 32px;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    font-size: 1.5rem;
 
-    input {
-      width: 100%;
-      background: white;
-      height: 30px;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      text-indent: 7px;
-    }
-
-    .search-icon {
-      background: white;
-      font-size: 2rem;
-      padding-right: 10px;
-      height: 30px;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      color: $navColor;
-      cursor: pointer;
-
-      &:active {
-        color: $mainColor;
-      }
+    .toggle-icon {
+      display: none;
     }
   }
 
@@ -58,11 +38,10 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 20%;
     margin-bottom: 0;
 
     li {
-      padding: 0 12px;
+      padding: 8px 12px;
       color: white;
       font-weight: bold;
       cursor: pointer;
@@ -72,5 +51,78 @@
         color: $mainColor;
       }
     }
+
+    .search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        width: 100%;
+        background: white;
+        height: 30px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        text-indent: 7px;
+        color: $bodyColor;
+      }
+
+      .search-icon {
+        background: white;
+        font-size: 2rem;
+        padding-right: 10px;
+        height: 30px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: $navColor;
+        cursor: pointer;
+
+        &:active {
+          color: $mainColor;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 3rem;
+
+    .nav-menu {
+      display: none;
+      margin-top: 1rem;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      li {
+        width: 100%;
+      }
+    }
+
+    .menu .toggle-icon {
+      display: block;
+
+      &:active {
+        color: $mainColor;
+      }
+    }
+
+    .nav-menu.active {
+      display: flex;
+      animation: fadeIn 3s forwards;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
