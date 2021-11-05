@@ -1,0 +1,76 @@
+@import '../commons/commons.scss';
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: $navColor;
+  padding: 10px 6rem;
+  justify-content: space-between;
+  width: 100%;
+
+  .logo {
+    width: 20%;
+    span {
+      color: $mainColor;
+      font-weight: bold;
+      font-size: 1rem;
+      border: 3px solid $mainColor;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      background: $bodyColor;
+    }
+  }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+
+    input {
+      width: 100%;
+      background: white;
+      height: 30px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      text-indent: 7px;
+    }
+
+    .search-icon {
+      background: white;
+      font-size: 2rem;
+      padding-right: 10px;
+      height: 30px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      color: $navColor;
+      cursor: pointer;
+
+      &:active {
+        color: $mainColor;
+      }
+    }
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 20%;
+    margin-bottom: 0;
+
+    li {
+      padding: 0 12px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 300ms ease;
+
+      &:hover {
+        color: $mainColor;
+      }
+    }
+  }
+}

@@ -61,7 +61,10 @@ function RegisterPage(props) {
     Axios.post('/api/users/register', variables).then((response) => {
       if (response.data.success) {
         console.log(response.data);
-        // props.history.push('/login');
+        message.success('회원가입이 완료되었습니다.');
+        setTimeout(() => {
+          props.history.push('/login');
+        }, 2000);
       } else {
         alert('회원가입에 실패하셨습니다.');
       }

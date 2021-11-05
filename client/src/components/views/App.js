@@ -3,10 +3,12 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import RegisterPage from './RegisterPage/RegisterPage';
 import LandingPage from './LandingPage/LandingPage';
 import LoginPage from './LoginPage/LoginPage';
+import NavBar from './NavBar/NavBar';
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <div>
         <Switch>
           <Route exact path="/" component={LandingPage} />

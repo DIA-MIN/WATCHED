@@ -1,6 +1,7 @@
-$bodyColor: #212121;
+$bodyColor: #000000;
 $mainColor: #fdd835;
-$navColor: #616161;
+$navColor: rgb(26, 26, 26);
+$loginColor: #616161;
 
 input {
   all: unset;
@@ -9,6 +10,10 @@ input {
 button {
   all: unset;
   cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .container {
