@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './LoginPage.scss';
 import Axios from 'axios';
 
-function LoginPage() {
+function LoginPage(props) {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
@@ -25,6 +25,7 @@ function LoginPage() {
     Axios.post('/api/users/login', variables).then((response) => {
       if (response.data.loginSuccess) {
         console.log(response.data);
+        props.history.push('/');
       } else {
         alert('로그인에 실패하셨습니다.');
       }
