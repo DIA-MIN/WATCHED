@@ -69,6 +69,7 @@ function RegisterPage(props) {
         alert('회원가입에 실패하셨습니다.');
       }
     });
+
   };
 
   const inputName = (
