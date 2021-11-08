@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
 import './LoginPage.scss';
 import Axios from 'axios';
+import {useDispatch} from 'react-redux';
+import {loginUser} from '../../../_actions/user_action';
+import {message} from 'antd';
 
 function LoginPage(props) {
+  const dispatch = useDispatch();
+
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
@@ -22,12 +27,11 @@ function LoginPage(props) {
       password: Password,
     };
 
-    Axios.post('/api/users/login', variables).then((response) => {
-      if (response.data.loginSuccess) {
-        console.log(response.data);
+    dispatch(loginUser(variables)).then((response) => {
+      if (response.payload.loginSuccess) {
         props.history.push('/');
       } else {
-        alert('로그인에 실패하셨습니다.');
+        message.error('로그인에 실패하셨습니다.');
       }
     });
   };

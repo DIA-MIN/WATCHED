@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {Button, message} from 'antd';
 import './RegisterPage.scss';
-import Axios from 'axios';
 import moment from 'moment';
+import {useDispatch} from 'react-redux';
+import {registerUser} from '../../../_actions/user_action';
 
 function RegisterPage(props) {
+  const dispatch = useDispatch();
+
   const [Email, setEmail] = useState('');
   const [Name, setName] = useState('');
   const [Password, setPassword] = useState('');
@@ -58,18 +61,17 @@ function RegisterPage(props) {
       image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
     };
 
-    Axios.post('/api/users/register', variables).then((response) => {
-      if (response.data.success) {
-        console.log(response.data);
+    dispatch(registerUser(variables)).then((response) => {
+      if (response.payload.success) {
         message.success('회원가입이 완료되었습니다.');
+
         setTimeout(() => {
           props.history.push('/login');
         }, 2000);
       } else {
-        alert('회원가입에 실패하셨습니다.');
+        message.error('회원가입에 실패하셨습니다.');
       }
     });
-
   };
 
   const inputName = (
