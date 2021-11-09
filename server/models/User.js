@@ -29,15 +29,9 @@ const userSchema = mongoose.Schema({
   tokenExp: {
     type: Number,
   },
-  kakao: {
-    type: String,
-    trim: true,
-    unique: 1,
-  },
-  google: {
-    type: String,
-    trim: true,
-    unique: 1,
+  iskakao: {
+    type: Boolean,
+    default: false,
   },
 });
 

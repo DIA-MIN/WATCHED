@@ -14,7 +14,6 @@
   p {
     font-size: 2.5rem;
     color: white;
-    margin-bottom: 10px;
   }
 
   form {
@@ -23,6 +22,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 30px;
 
     label {
       font-size: 1.25em;
@@ -62,10 +62,6 @@
       }
     }
   }
-}
-
-.kakaoLoginBtn {
-  color: white;
 }
 
 @media screen and (max-width: 478px) {

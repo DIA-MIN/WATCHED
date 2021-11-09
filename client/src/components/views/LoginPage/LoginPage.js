@@ -41,7 +41,7 @@ function LoginPage(props) {
     <div className="loginContent">
       <h1>WATCHED</h1>
       <p>Login</p>
-      <KaKaoLogin />
+      <div className="loginApart"></div>
       <form onSubmit={onSubmitForm}>
         <label>이메일</label>
         <input type="email" value={Email} onChange={onEmailHandler} />
@@ -51,6 +51,7 @@ function LoginPage(props) {
 
         <button onSubmit={onSubmitForm}>로그인</button>
       </form>
+      <KaKaoLogin />
     </div>
   );
 }

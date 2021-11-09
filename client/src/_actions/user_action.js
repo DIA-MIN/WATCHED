@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {LOGIN_USER, REGIST_USER, AUTH_USER} from './types';
+import {LOGIN_USER, REGIST_USER, AUTH_USER, KAKAO_USER} from './types';
 
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -30,6 +30,17 @@ export function auth() {
 
   return {
     type: AUTH_USER,
+    payload: request,
+  };
+}
+
+export function checkUser(dataSubmit) {
+  const request = axios
+    .post('/api/users/checkuser', dataSubmit)
+    .then((response) => response.data);
+
+  return {
+    type: KAKAO_USER,
     payload: request,
   };
 }

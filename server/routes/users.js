@@ -3,6 +3,13 @@ const router = express.Router();
 const {User} = require('../models/User');
 const {auth} = require('../middleware/auth');
 
+router.post('/checkuser', (req, res) => {
+  User.findOne({email: req.body.email}).exec((err, user) => {
+    if (err) return res.status(400).json({isUser: false, err});
+    res.status(200).json({isUser: true, userData: user});
+  });
+});
+
 router.post('/register', (req, res) => {
   const user = new User(req.body);
 
