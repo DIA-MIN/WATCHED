@@ -4,6 +4,7 @@ import Axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_action';
 import {message} from 'antd';
+import KaKaoLogin from './KaKaoLogin';
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function LoginPage(props) {
     <div className="loginContent">
       <h1>WATCHED</h1>
       <p>Login</p>
+      <KaKaoLogin />
       <form onSubmit={onSubmitForm}>
         <label>이메일</label>
         <input type="email" value={Email} onChange={onEmailHandler} />
