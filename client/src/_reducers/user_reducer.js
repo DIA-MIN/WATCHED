@@ -3,6 +3,7 @@ import {
   REGIST_USER,
   AUTH_USER,
   KAKAO_USER,
+  KAKAO_LOGIN_USER,
 } from '../_actions/types';
 
 export default function (state = {}, action) {
@@ -16,8 +17,8 @@ export default function (state = {}, action) {
     case AUTH_USER:
       return {...state, userData: action.payload};
 
-    case KAKAO_USER:
-      return {...state, userData: action.payload};
+    case KAKAO_LOGIN_USER:
+      return {...state, loginSuccess: action.payload};
 
     default:
       return state;

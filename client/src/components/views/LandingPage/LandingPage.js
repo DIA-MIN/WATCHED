@@ -19,31 +19,7 @@ function LandingPage(props) {
     }
   };
 
-  const onClickLogout = () => {
-    Axios.get('/api/users/logout').then((response) => {
-      if (response.data.success) {
-        console.log(response.data);
-      } else {
-        alert('로그아웃 실패!');
-      }
-    });
-  };
-
-  return (
-    <div>
-      LandingPage
-      <br />
-      <br />
-      <button style={{border: '1px solid black'}} onClick={onClickLogout}>
-        Logout
-      </button>
-      <br />
-      <br />
-      <button style={{border: '1px solid black'}} onClick={logoutWithKakao}>
-        Kakao Logout
-      </button>
-    </div>
-  );
+  return <div>LandingPage</div>;
 }
 
 export default LandingPage;

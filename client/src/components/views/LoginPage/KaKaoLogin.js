@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import './LoginPage.scss';
 import {jsKey} from './../../Config';
 import {useDispatch} from 'react-redux';
-import {registerUser, checkUser} from '../../../_actions/user_action';
-import {withRouter} from 'react-router-dom';
+import {registerUser, loginKakaoUser} from '../../../_actions/user_action';
+// import {withRouter} from 'react-router-dom';
 
 const {Kakao} = window;
 
@@ -37,17 +37,21 @@ function KaKaoLogin(props) {
               iskakao: true,
             };
 
-            dispatch(checkUser(variables)).then((response) => {
-              if (!response.payload.isUser) {
+            dispatch(loginKakaoUser(variables)).then((response) => {
+              if (response.payload.loginSuccess) {
+                props.history.push('/');
+              } else {
                 dispatch(registerUser(variables)).then((response) => {
                   if (response.payload.success) {
-                    props.history.push('/');
-                  } else {
-                    alert('로그인에 실패 하셨습니다.');
+                    dispatch(loginKakaoUser(variables)).then((response) => {
+                      if (response.payload.loginSuccess) {
+                        props.history.push('/');
+                      } else {
+                        alert('로그인에 실패하셨습니다.');
+                      }
+                    });
                   }
                 });
-              } else {
-                props.history.push('/');
               }
             });
           },
@@ -74,4 +78,5 @@ function KaKaoLogin(props) {
   );
 }
 
-export default withRouter(KaKaoLogin);
+// export default withRouter(KaKaoLogin);
+export default KaKaoLogin;

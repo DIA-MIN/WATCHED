@@ -2,6 +2,8 @@
 
 .navContainer {
   display: flex;
+  position: sticky;
+  top: 0;
   align-items: center;
   background: $navColor;
   padding: 8px 5rem;

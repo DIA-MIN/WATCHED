@@ -6,7 +6,7 @@ const {auth} = require('../middleware/auth');
 router.post('/checkuser', (req, res) => {
   User.findOne({email: req.body.email}).exec((err, user) => {
     if (err) return res.status(400).json({isUser: false, err});
-    res.status(200).json({isUser: true, userData: user});
+    res.status(200).json({isAuth: true, userData: user});
   });
 });
 
@@ -47,6 +47,26 @@ router.post('/login', (req, res) => {
           .status(200)
           .json({loginSuccess: true, userId: user._id});
       });
+    });
+  });
+});
+
+router.post('/kakaologin', (req, res) => {
+  User.findOne({email: req.body.email}, (err, user) => {
+    if (!user) {
+      return res.json({
+        loginSuccess: false,
+        message: '해당 유저는 존재하지 않습니다.',
+      });
+    }
+
+    user.generateToken((err, user) => {
+      if (err) return res.status(400).send(err);
+
+      res
+        .cookie('x_auth', user.token)
+        .status(200)
+        .json({loginSuccess: true, userId: user._id});
     });
   });
 });

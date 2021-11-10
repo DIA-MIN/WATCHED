@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import './LoginPage.scss';
-import Axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_action';
 import {message} from 'antd';
 import KaKaoLogin from './KaKaoLogin';
+import {withRouter} from 'react-router-dom';
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ function LoginPage(props) {
 
         <button onSubmit={onSubmitForm}>로그인</button>
       </form>
-      <KaKaoLogin />
+      <KaKaoLogin {...props} />
     </div>
   );
 }

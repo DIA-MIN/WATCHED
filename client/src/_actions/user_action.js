@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {LOGIN_USER, REGIST_USER, AUTH_USER, KAKAO_USER} from './types';
+import {LOGIN_USER, REGIST_USER, AUTH_USER, KAKAO_LOGIN_USER} from './types';
 
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -34,13 +34,13 @@ export function auth() {
   };
 }
 
-export function checkUser(dataSubmit) {
+export function loginKakaoUser(dataSubmit) {
   const request = axios
-    .post('/api/users/checkuser', dataSubmit)
+    .post('/api/users/kakaologin', dataSubmit)
     .then((response) => response.data);
 
   return {
-    type: KAKAO_USER,
+    type: KAKAO_LOGIN_USER,
     payload: request,
   };
 }
