@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaSearch} from 'react-icons/fa';
+import {FaSearch, FaStar} from 'react-icons/fa';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
 import {Avatar} from 'antd';
@@ -49,17 +49,21 @@ function RightMenu(props) {
             <FaSearch className="search-icon" />
           </form>
         </li>
+        <a href>
+          <li className="pickContent">
+            <FaStar className="star-icon" />
+            My Pick
+          </li>
+        </a>
         {user.userData && (
           <li className="profileContent">
-            <div>
-              <Avatar
-                shape="square"
-                size="small"
-                src={user.userData.image}
-                alt="profileimg"
-              />
-              <span>{user.userData.name}</span>
-            </div>
+            <Avatar
+              shape="square"
+              size="small"
+              src={user.userData.image}
+              alt="profileimg"
+            />
+            <span>{user.userData.name}</span>
           </li>
         )}
 

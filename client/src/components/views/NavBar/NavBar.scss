@@ -54,16 +54,26 @@
       }
     }
 
-    .profileContent {
-      div {
-        display: flex;
-        align-items: center;
+    .pickContent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        span {
-          margin-left: 10px;
-        }
+      .star-icon {
+        color: $mainColor;
+        margin-right: 5px;
+        font-size: 1rem;
       }
+    }
 
+    .profileContent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        margin-left: 7px;
+      }
       &:hover {
         color: white;
       }
@@ -102,7 +112,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 778px) {
   .navContainer {
     flex-direction: column;
     align-items: flex-start;
@@ -117,6 +127,10 @@
 
       li {
         width: 100%;
+      }
+
+      .profileContent {
+        display: none;
       }
     }
 
