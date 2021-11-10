@@ -54,6 +54,21 @@
       }
     }
 
+    .profileContent {
+      div {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-left: 10px;
+        }
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
+
     .search {
       display: flex;
       justify-content: center;
