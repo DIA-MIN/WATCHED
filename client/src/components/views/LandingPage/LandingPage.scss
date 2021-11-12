@@ -1,5 +1,23 @@
 @import '../commons/commons.scss';
 
 .LandingContainer {
-  @extend .container;
+  background: $bodyColor;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .trailerContent {
+    padding: 3rem 5rem;
+
+    h1 {
+      color: $mainColor;
+    }
+
+    .trailer-card {
+      img {
+        margin: auto;
+        height: 460px;
+      }
+    }
+  }
 }

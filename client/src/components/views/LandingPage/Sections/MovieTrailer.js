@@ -1,28 +1,49 @@
-import React from 'react';
-import {Row, Col} from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Row, Col, Carousel} from 'antd';
+import {IMAGE_BASE_URL} from './../../../Config';
 
-function MovieTrailer() {
+function MovieTrailer(props) {
+  const [Movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const movies = props.movies;
+    console.log(movies);
+    const trailer = [];
+    for (let i = 0; i < 5; i++) {
+      trailer.push(movies[i]);
+    }
+    setMovies(trailer);
+  }, []);
+
   return (
     <div className="trailerContent">
       <h1>인기 트레일러</h1>
-      <Row>
-        <Col lg={18} xs={24}>
-          <div>
-            <h3>title</h3>
-            {/* <video /> */}
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/-ezfi6FQ8Ds"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </Col>
-        <Col lg={6} xs={24}></Col>
-      </Row>
+      <Carousel autoplay>
+        {Movies &&
+          Movies.map((movie, index) => (
+            <>
+              {/* <div
+                key={index}
+                className="trailer-card"
+                style={{
+                  background: `linear-gradient(to bottom, rgba(0,0,0,0)
+                  39%, rgba(0,0,0,0)
+                  41%, rgba(0,0,0,0.65)
+                  100%),url('${IMAGE_BASE_URL}w1280${movie.backdrop_path}')`,
+                  height: '450px',
+                  backgroundSize: '100%, cover',
+                  backgroundPosition: 'center, center',
+                  width: '100%',
+                  position: 'relative',
+                }}
+              > */}
+              <div className="trailer-card">
+                <img src={`${IMAGE_BASE_URL}w1280${movie.backdrop_path}`} />
+              </div>
+              {/* </div> */}
+            </>
+          ))}
+      </Carousel>
     </div>
   );
 }

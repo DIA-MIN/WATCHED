@@ -2,7 +2,6 @@ import {
   LOGIN_USER,
   REGIST_USER,
   AUTH_USER,
-  KAKAO_USER,
   KAKAO_LOGIN_USER,
 } from '../_actions/types';
 
