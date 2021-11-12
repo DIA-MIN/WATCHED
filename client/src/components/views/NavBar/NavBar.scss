@@ -157,3 +157,9 @@
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 478px) {
+  .navContainer {
+    padding: 12px 8px;
+  }
+}

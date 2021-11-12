@@ -19,7 +19,6 @@ function LandingPage() {
       .then((response) => {
         console.log(response);
         setMovies([...response.results]);
-        console.log('Movie list', Movies);
       });
   };
 

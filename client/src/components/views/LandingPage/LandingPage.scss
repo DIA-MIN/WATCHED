@@ -9,14 +9,65 @@
   .trailerContent {
     padding: 3rem 5rem;
 
-    h1 {
-      color: $mainColor;
-    }
-
     .trailer-card {
-      img {
-        margin: auto;
-        height: 460px;
+      margin-top: 1rem;
+
+      .trailer-poster {
+        display: flex;
+        position: absolute;
+        left: 1.5rem;
+        bottom: 1.5rem;
+
+        .trailer-title {
+          margin-left: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: flex-start;
+          cursor: pointer;
+          color: white;
+
+          span {
+            font-size: 2rem;
+            font-weight: bold;
+          }
+
+          .play-icon {
+            font-size: 3.5rem;
+          }
+
+          &:hover {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 483px) {
+  .LandingContainer {
+    .trailerContent {
+      padding: 8px;
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .trailer-card {
+        .trailer-poster {
+          .trailer-title {
+            span {
+              font-size: 1rem;
+              font-weight: bold;
+            }
+
+            .play-icon {
+              font-size: 2.5rem;
+            }
+          }
+        }
       }
     }
   }

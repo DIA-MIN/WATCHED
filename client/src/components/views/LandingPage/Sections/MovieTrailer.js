@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Row, Col, Carousel} from 'antd';
 import {IMAGE_BASE_URL} from './../../../Config';
+import {BsPlayCircle} from 'react-icons/bs';
 
 function MovieTrailer(props) {
   const [Movies, setMovies] = useState([]);
@@ -17,12 +18,12 @@ function MovieTrailer(props) {
 
   return (
     <div className="trailerContent">
-      <h1>인기 트레일러</h1>
+      <h1 className="category">인기 트레일러</h1>
       <Carousel autoplay>
         {Movies &&
           Movies.map((movie, index) => (
             <>
-              {/* <div
+              <div
                 key={index}
                 className="trailer-card"
                 style={{
@@ -36,11 +37,15 @@ function MovieTrailer(props) {
                   width: '100%',
                   position: 'relative',
                 }}
-              > */}
-              <div className="trailer-card">
-                <img src={`${IMAGE_BASE_URL}w1280${movie.backdrop_path}`} />
+              >
+                <div className="trailer-poster">
+                  <img src={`${IMAGE_BASE_URL}w154${movie.poster_path}`} />
+                  <div className="trailer-title">
+                    <BsPlayCircle className="play-icon" />
+                    <span>"{movie.title}"</span>
+                  </div>
+                </div>
               </div>
-              {/* </div> */}
             </>
           ))}
       </Carousel>
