@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Row, Col, Carousel} from 'antd';
-import {IMAGE_BASE_URL} from './../../../Config';
+import {IMAGE_BASE_URL, API_URL, API_KEY} from './../../../Config';
 import {BsPlayCircle} from 'react-icons/bs';
 
 function MovieTrailer(props) {
   const [Movies, setMovies] = useState([]);
-
+  const [TrailerEndpoint, setTrailerEndpoint] = useState([]);
+  const [TrailerKey, setTrailerKey] = useState([]);
+  const youtubeKeys = [];
   useEffect(() => {
     const movies = props.movies;
     console.log(movies);
@@ -14,7 +16,33 @@ function MovieTrailer(props) {
       trailer.push(movies[i]);
     }
     setMovies(trailer);
+    createEndpoint(Movies);
+    TrailerEndpoint.forEach((endpoint) => fetchTrailerInfo(endpoint));
+    setTrailerKey(youtubeKeys);
   }, []);
+
+  const createEndpoint = (movie) => {
+    const endpoint = [];
+    movie.forEach((movie) =>
+      endpoint.push(`${API_URL}movie/${movie.id}/videos?api_key=${API_KEY}`)
+    );
+    setTrailerEndpoint(endpoint);
+  };
+
+  const fetchTrailerInfo = (endpoint) => {
+    fetch(endpoint)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        youtubeKeys.push(
+          res.results.filter(
+            (list) =>
+              list.name === 'Official Trailer' ||
+              list.name === 'Official Teaser'
+          )[0].key
+        );
+      });
+  };
 
   return (
     <div className="trailerContent">

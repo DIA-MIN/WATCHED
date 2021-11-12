@@ -9,7 +9,6 @@ function LandingPage() {
 
   useEffect(() => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=1`;
-    // const movieTrailer = `${API_URL}movie/580489/videos?api_key=${API_KEY}`;
     fetchMoviesInfo(endpoint);
   }, []);
 
