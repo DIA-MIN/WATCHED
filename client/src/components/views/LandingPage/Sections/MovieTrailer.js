@@ -6,23 +6,22 @@ import Modal from './Modal';
 
 function MovieTrailer(props) {
   const [Movies, setMovies] = useState([]);
-  const [TrailerEndpoint, setTrailerEndpoint] = useState([]);
   const [TrailerKey, setTrailerKey] = useState([]);
   const [TrailerKeyIndex, setTrailerKeyIndex] = useState(0);
   const [ModalOpen, setModalOpen] = useState(false);
-
   const youtubeKeys = [];
+
   useEffect(() => {
     const movies = props.movies;
     console.log(movies);
     const trailer = [];
+    let endpoint = [];
     for (let i = 0; i < 5; i++) {
       trailer.push(movies[i]);
     }
-    console.log(trailer);
     setMovies(trailer);
-    createEndpoint(Movies);
-    TrailerEndpoint.forEach((endpoint) => fetchTrailerInfo(endpoint));
+    endpoint = createEndpoint(trailer);
+    endpoint.forEach((endpoint) => fetchTrailerInfo(endpoint));
     setTrailerKey(youtubeKeys);
   }, []);
 
@@ -31,7 +30,7 @@ function MovieTrailer(props) {
     movie.forEach((movie) =>
       endpoint.push(`${API_URL}movie/${movie.id}/videos?api_key=${API_KEY}`)
     );
-    setTrailerEndpoint(endpoint);
+    return endpoint;
   };
 
   const fetchTrailerInfo = (endpoint) => {

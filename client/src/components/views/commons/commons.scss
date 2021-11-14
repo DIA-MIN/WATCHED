@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 $bodyColor: #000000;
 $mainColor: #fdd835;
 $navColor: rgb(26, 26, 26);
 $loginColor: #616161;
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 input {
   all: unset;
