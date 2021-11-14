@@ -13,6 +13,10 @@ $loginColor: #616161;
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 input {
   all: unset;
 }

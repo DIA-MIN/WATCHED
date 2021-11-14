@@ -1,7 +1,13 @@
-import React from 'react';
-import {FaTimes} from 'react-icons/fa';
+import React, {useState} from 'react';
+import {FaTimes, FaAngleDown, FaAngleUp} from 'react-icons/fa';
 
 function Modal({modalCLose, trailerKey, movie}) {
+  const [Isclamp, setIsClamp] = useState(false);
+
+  const onChangeClamp = () => {
+    setIsClamp(!Isclamp);
+  };
+
   return (
     <div className="trailer_modal_contaier">
       <div className="trailer_modal">
@@ -16,7 +22,14 @@ function Modal({modalCLose, trailerKey, movie}) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
-        <p>{movie.overview}</p>
+        <p className={Isclamp ? 'modal_overview' : 'modal_overview clamp'}>
+          {movie.overview}
+        </p>
+        {Isclamp ? (
+          <FaAngleUp className="clamp-icon" onClick={onChangeClamp} />
+        ) : (
+          <FaAngleDown className="clamp-icon" onClick={onChangeClamp} />
+        )}
       </div>
     </div>
   );

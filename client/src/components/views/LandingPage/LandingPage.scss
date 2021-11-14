@@ -36,10 +36,12 @@
           .play-icon {
             font-size: 3.5rem;
           }
+        }
+      }
 
-          &:hover {
-            color: $mainColor;
-          }
+      &:hover {
+        .trailer-title {
+          color: $mainColor;
         }
       }
     }
@@ -73,10 +75,28 @@
           color: #fff;
         }
 
-        p {
+        .modal_overview {
           margin-top: 1rem;
           font-size: 1rem;
           color: #fff;
+        }
+
+        .modal_overview.clamp {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+        }
+
+        .clamp-icon {
+          color: #fff;
+          font-size: 2rem;
+          align-self: center;
+          cursor: pointer;
+
+          &:hover {
+            color: $mainColor;
+          }
         }
 
         .modal_close_btn {
@@ -103,7 +123,7 @@
           width: 768px;
           height: 700px;
 
-          p {
+          .modal_overview {
             font-size: 14px;
           }
 
@@ -125,8 +145,9 @@
           width: 568px;
           height: 600px;
 
-          p {
+          .modal_overview {
             font-size: 13px;
+            overflow: scroll;
           }
 
           h1,
@@ -147,8 +168,9 @@
           width: 368px;
           height: 400px;
 
-          p {
-            font-size: 11px;
+          .modal_overview {
+            font-size: 12px;
+            overflow: scroll;
           }
 
           h1,
