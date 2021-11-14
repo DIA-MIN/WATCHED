@@ -1,14 +1,15 @@
 @import '../commons/commons.scss';
 
+// LandingPage scss
 .LandingContainer {
   background: $bodyColor;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 3rem 5rem;
 
+  // TrailerPoster scss
   .trailerContent {
-    padding: 3rem 5rem;
-
     .trailer-card {
       margin-top: 1rem;
 
@@ -46,6 +47,7 @@
       }
     }
 
+    // Modal scss
     .trailer_modal_contaier {
       width: 100%;
       height: 100vh;
@@ -113,6 +115,8 @@
       }
     }
   }
+
+  // TopMovie scss
 }
 
 @media screen and(max-width: 1240px) {
@@ -185,9 +189,8 @@
 
 @media screen and(max-width: 500px) {
   .LandingContainer {
+    padding: 8px;
     .trailerContent {
-      padding: 8px;
-
       h1 {
         font-size: 1.5rem;
         font-weight: bold;

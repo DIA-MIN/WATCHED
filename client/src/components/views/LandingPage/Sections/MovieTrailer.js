@@ -55,7 +55,10 @@ function MovieTrailer(props) {
 
   return (
     <div className="trailerContent">
-      <h1 className="category">인기 트레일러</h1>
+      <h1 className="category">
+        <div className="ColBar"></div>인기 트레일러
+      </h1>
+      <p className="subCategory">인기 있는 영화의 예고편을 감상해보세요.</p>
       <Carousel autoplay>
         {Movies &&
           Movies.map((movie, index) => (

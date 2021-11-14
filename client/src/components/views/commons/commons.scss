@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 $bodyColor: #000000;
 $mainColor: #fdd835;
 $navColor: rgb(26, 26, 26);
 $loginColor: #616161;
+$CategorySubColor: #bdbdbd;
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -45,5 +45,19 @@ a {
 }
 
 .category {
-  color: $mainColor;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+
+  .ColBar {
+    display: inline;
+    border: 3px solid $mainColor;
+    border-radius: 5px;
+    margin-right: 7px;
+  }
+}
+
+.subCategory {
+  color: $CategorySubColor;
+  font-size: 1rem;
 }

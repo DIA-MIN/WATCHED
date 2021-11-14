@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {API_KEY, API_URL} from './../../Config';
 import './LandingPage.scss';
 import MovieTrailer from './Sections/MovieTrailer';
+import TopMovie from './Sections/TopMovie';
 
 function LandingPage() {
   const [Movies, setMovies] = useState([]);
@@ -23,7 +24,8 @@ function LandingPage() {
 
   return (
     <div className="LandingContainer">
-      {Movies.length > 0 ? <MovieTrailer movies={Movies} /> : null}
+      {Movies && <MovieTrailer movies={Movies} />}
+      {Movies && <TopMovie movies={Movies} />}
     </div>
   );
 }
