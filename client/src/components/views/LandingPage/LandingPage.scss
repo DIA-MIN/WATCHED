@@ -17,6 +17,7 @@
         position: absolute;
         left: 1.5rem;
         bottom: 1.5rem;
+        margin-bottom: 1rem;
 
         .trailer-title {
           margin-left: 1rem;
@@ -42,10 +43,59 @@
         }
       }
     }
+
+    .trailer_modal_contaier {
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 10;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 15;
+
+      .trailer_modal {
+        padding: 2rem;
+        width: 1024px;
+        height: 800px;
+        background-color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        background: $navColor;
+
+        h1 {
+          color: #fff;
+        }
+
+        p {
+          margin-top: 1rem;
+          font-size: 1rem;
+          color: #fff;
+        }
+
+        .modal_close_btn {
+          color: #fff;
+          font-size: 2rem;
+          position: absolute;
+          right: 2rem;
+          cursor: pointer;
+
+          &:hover {
+            color: $mainColor;
+          }
+        }
+      }
+    }
   }
 }
 
-@media screen and(max-width: 483px) {
+@media screen and(max-width: 500px) {
   .LandingContainer {
     .trailerContent {
       padding: 8px;

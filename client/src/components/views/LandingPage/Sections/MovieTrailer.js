@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Row, Col, Carousel} from 'antd';
 import {IMAGE_BASE_URL, API_URL, API_KEY} from './../../../Config';
-import {BsPlayCircle} from 'react-icons/bs';
+import TrailerPoster from './TrailerPoster';
+import Modal from './Modal';
 
 function MovieTrailer(props) {
   const [Movies, setMovies] = useState([]);
   const [TrailerEndpoint, setTrailerEndpoint] = useState([]);
   const [TrailerKey, setTrailerKey] = useState([]);
+  const [TrailerKeyIndex, setTrailerKeyIndex] = useState(0);
+  const [ModalOpen, setModalOpen] = useState(false);
+
   const youtubeKeys = [];
   useEffect(() => {
     const movies = props.movies;
@@ -44,15 +48,19 @@ function MovieTrailer(props) {
       });
   };
 
+  const onModalClose = (index) => {
+    setModalOpen(!ModalOpen);
+    setTrailerKeyIndex(index);
+  };
+
   return (
     <div className="trailerContent">
       <h1 className="category">인기 트레일러</h1>
       <Carousel autoplay>
         {Movies &&
           Movies.map((movie, index) => (
-            <>
+            <React.Fragment key={index}>
               <div
-                key={index}
                 className="trailer-card"
                 style={{
                   background: `linear-gradient(to bottom, rgba(0,0,0,0)
@@ -65,18 +73,25 @@ function MovieTrailer(props) {
                   width: '100%',
                   position: 'relative',
                 }}
+                onClick={() => {
+                  onModalClose(index);
+                }}
               >
-                <div className="trailer-poster">
-                  <img src={`${IMAGE_BASE_URL}w154${movie.poster_path}`} />
-                  <div className="trailer-title">
-                    <BsPlayCircle className="play-icon" />
-                    <span>"{movie.title}"</span>
-                  </div>
-                </div>
+                <TrailerPoster
+                  poster={movie.poster_path}
+                  posterTitle={movie.title}
+                />
               </div>
-            </>
+            </React.Fragment>
           ))}
       </Carousel>
+      {ModalOpen && (
+        <Modal
+          modalCLose={onModalClose}
+          movie={Movies[TrailerKeyIndex]}
+          trailerKey={TrailerKey[TrailerKeyIndex]}
+        />
+      )}
     </div>
   );
 }
