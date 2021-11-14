@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {FaBars, FaTimes} from 'react-icons/fa';
 import './NavBar.scss';
 import RightMenu from './Sections/RightMenu';
+import {withRouter} from 'react-router-dom';
 
 function NavBar(props) {
   const [Clicked, setClicked] = useState(false);
@@ -12,8 +13,8 @@ function NavBar(props) {
 
   return (
     <nav className="navContainer">
-      <div className="logo">
-        <a href="/">WATCHED</a>
+      <div className="logo" onClick={() => props.history.push('/')}>
+        WATCHED
       </div>
 
       <RightMenu isClicked={Clicked} />
@@ -29,4 +30,4 @@ function NavBar(props) {
   );
 }
 
-export default NavBar;
+export default withRouter(NavBar);

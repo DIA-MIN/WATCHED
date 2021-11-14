@@ -13,7 +13,7 @@ function MovieTrailer(props) {
 
   useEffect(() => {
     const movies = props.movies;
-    console.log(movies);
+    // console.log(movies);
     const trailer = [];
     let endpoint = [];
     for (let i = 0; i < 5; i++) {
@@ -37,7 +37,7 @@ function MovieTrailer(props) {
     fetch(endpoint)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         youtubeKeys.push(
           res.results.filter(
             (list) =>

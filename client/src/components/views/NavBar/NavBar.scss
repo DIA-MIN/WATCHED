@@ -11,25 +11,21 @@
   z-index: 3;
 
   .logo {
-    a {
-      color: $mainColor;
-      font-weight: bold;
-      font-size: 1rem;
-      border: 3px solid $mainColor;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      background: $bodyColor;
-    }
+    color: $mainColor;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 3px solid $mainColor;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: $bodyColor;
   }
 
   .menu {
     color: white;
-    display: flex;
     position: absolute;
-    right: 32px;
-    justify-content: center;
-    align-items: center;
+    right: 47px;
+    top: 26px;
     font-size: 1.5rem;
 
     .toggle-icon {
@@ -39,7 +35,6 @@
 
   .nav-menu {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     margin-bottom: 0;
 
@@ -123,18 +118,26 @@
       display: none;
       margin-top: 1rem;
       flex-direction: column;
-      align-items: center;
       width: 100%;
 
       li {
         width: 100%;
+        text-align: center;
+
+        &:hover {
+          background: $mainColor;
+          color: $bodyColor;
+        }
+      }
+
+      li:first-child:hover {
+        background: $navColor;
       }
 
       .profileContent {
         display: none;
       }
     }
-
     .menu .toggle-icon {
       display: block;
 
@@ -162,5 +165,10 @@
 @media screen and (max-width: 500px) {
   .navContainer {
     padding: 12px 8px;
+
+    .menu {
+      right: 8px;
+      top: 24px;
+    }
   }
 }

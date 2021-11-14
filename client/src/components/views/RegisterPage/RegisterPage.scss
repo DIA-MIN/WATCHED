@@ -113,3 +113,53 @@
     transform: scale(1.2);
   }
 }
+
+@media screen and (max-width: 784px) {
+  .registerTitle {
+    font-size: 1.5rem;
+  }
+
+  .registerSubtitle {
+    font-size: 1.25rem;
+  }
+
+  .registerContent form {
+    font-size: 1rem;
+
+    div {
+      button {
+        padding: 6px 8px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .registerBtn {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .registerTitle {
+    font-size: 1.15rem;
+  }
+
+  .registerSubtitle {
+    font-size: 1rem;
+  }
+
+  .registerContent form {
+    font-size: 14px;
+
+    div {
+      button {
+        padding: 6px 8px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .registerBtn {
+    font-size: 1rem;
+  }
+}

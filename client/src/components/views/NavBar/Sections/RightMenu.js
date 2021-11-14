@@ -23,22 +23,28 @@ function RightMenu(props) {
 
   if (user.userData && !user.userData.isAuth) {
     return (
-      <div>
-        <ul className={props.isClicked ? 'nav-menu active' : 'nav-menu'}>
-          <li>
-            <form className="search">
-              <input />
-              <FaSearch className="search-icon" />
-            </form>
-          </li>
-          <a href="/login">
-            <li>로그인</li>
-          </a>
-          <a href="/register">
-            <li>회원가입</li>
-          </a>
-        </ul>
-      </div>
+      <ul className={props.isClicked ? 'nav-menu active' : 'nav-menu'}>
+        <li>
+          <form className="search">
+            <input />
+            <FaSearch className="search-icon" />
+          </form>
+        </li>
+        <li
+          onClick={() => {
+            props.history.push('/login');
+          }}
+        >
+          로그인
+        </li>
+        <li
+          onClick={() => {
+            props.history.push('/register');
+          }}
+        >
+          회원가입
+        </li>
+      </ul>
     );
   } else {
     return (
@@ -49,12 +55,10 @@ function RightMenu(props) {
             <FaSearch className="search-icon" />
           </form>
         </li>
-        <a href>
-          <li className="pickContent">
-            <FaStar className="star-icon" />
-            My Pick
-          </li>
-        </a>
+        <li className="pickContent" onClick>
+          <FaStar className="star-icon" />
+          My Pick
+        </li>
         {user.userData && (
           <li className="profileContent">
             <Avatar
@@ -66,10 +70,7 @@ function RightMenu(props) {
             <span>{user.userData.name}</span>
           </li>
         )}
-
-        <a onClick={onClickLogout}>
-          <li>로그아웃</li>
-        </a>
+        <li onClick={onClickLogout}>로그아웃</li>
       </ul>
     );
   }

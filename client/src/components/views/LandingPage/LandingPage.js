@@ -24,8 +24,8 @@ function LandingPage() {
 
   return (
     <div className="LandingContainer">
-      {Movies && <MovieTrailer movies={Movies} />}
-      {Movies && <TopMovie movies={Movies} />}
+      {Movies.length > 0 ? <MovieTrailer movies={Movies} /> : null}
+      {Movies.length > 0 ? <TopMovie movies={Movies} /> : null}
     </div>
   );
 }
