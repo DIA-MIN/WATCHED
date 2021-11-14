@@ -19,6 +19,7 @@ function MovieTrailer(props) {
     for (let i = 0; i < 5; i++) {
       trailer.push(movies[i]);
     }
+    console.log(trailer);
     setMovies(trailer);
     createEndpoint(Movies);
     TrailerEndpoint.forEach((endpoint) => fetchTrailerInfo(endpoint));
