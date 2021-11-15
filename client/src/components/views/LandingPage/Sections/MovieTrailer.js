@@ -41,8 +41,9 @@ function MovieTrailer(props) {
         youtubeKeys.push(
           res.results.filter(
             (list) =>
-              list.name === 'Official Trailer' ||
-              list.name === 'Official Teaser'
+              // list.name === 'Official Trailer' ||
+              // list.name === 'Official Teaser'
+              list.name.includes('Trailer') || list.name.includes('Teaser')
           )[0].key
         );
       });

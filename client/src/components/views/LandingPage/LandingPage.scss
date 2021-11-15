@@ -119,6 +119,63 @@
   // TopMovie scss
   .topMovieContent {
     margin-top: 3rem;
+
+    .topChart {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 3px;
+      column-gap: 3px;
+      font-size: 1.15rem;
+
+      .topChart-item {
+        background: $navColor;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        cursor: pointer;
+
+        .top-movie-left {
+          display: flex;
+          align-items: center;
+
+          .top-movie-rank {
+            background: $mainColor;
+            padding: 6px 10px;
+            border-radius: 10px;
+            color: $bodyColor;
+            font-weight: bold;
+            margin-right: 1rem;
+          }
+
+          .top-movie-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .top-movie-rate {
+              font-size: 14px;
+
+              .star-icon {
+                margin-right: 5px;
+                color: $rageColor;
+              }
+            }
+          }
+        }
+
+        .add-myPick-icon {
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: 300ms ease;
+
+          &:hover {
+            color: $heartColor;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -137,6 +194,34 @@
           h1,
           .modal_close_btn {
             font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .topMovieContent {
+      .topChart {
+        font-size: 1rem;
+        .topChart-item {
+          padding: 1.25rem;
+          .top-movie-left {
+            .top-movie-rank {
+              padding: 6px 10px;
+            }
+
+            .top-movie-info {
+              .top-movie-rate {
+                font-size: 13px;
+
+                .star-icon {
+                  margin-right: 5px;
+                  color: $rageColor;
+                }
+              }
+            }
+          }
+          .add-myPick-icon {
+            font-size: 1.25rem;
           }
         }
       }
@@ -162,6 +247,45 @@
             font-size: 1.25rem;
           }
         }
+      }
+    }
+
+    .topMovieContent {
+      .topChart {
+        font-size: 14px;
+        .topChart-item {
+          padding: 1rem;
+          .top-movie-left {
+            .top-movie-rank {
+              padding: 4px 8px;
+            }
+            .top-movie-info {
+              .top-movie-rate {
+                font-size: 12px;
+
+                .star-icon {
+                  margin-right: 5px;
+                  color: $rageColor;
+                }
+              }
+            }
+          }
+          .add-myPick-icon {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and(max-width: 768px) {
+  .LandingContainer {
+    .topMovieContent {
+      .topChart {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 5px;
+        font-size: 14px;
       }
     }
   }

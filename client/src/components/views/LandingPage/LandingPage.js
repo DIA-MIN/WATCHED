@@ -6,7 +6,6 @@ import TopMovie from './Sections/TopMovie';
 
 function LandingPage() {
   const [Movies, setMovies] = useState([]);
-  // const [Trailer, setTrailer] = useState([]); // Trailer endpoint
 
   useEffect(() => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=1`;

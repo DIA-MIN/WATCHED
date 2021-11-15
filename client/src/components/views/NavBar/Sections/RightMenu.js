@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaSearch, FaStar} from 'react-icons/fa';
+import {FaSearch, FaStar, FaHeart} from 'react-icons/fa';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
 import {Avatar} from 'antd';
@@ -56,7 +56,7 @@ function RightMenu(props) {
           </form>
         </li>
         <li className="pickContent" onClick>
-          <FaStar className="star-icon" />
+          <FaHeart className="heart-icon" />
           My Pick
         </li>
         {user.userData && (
