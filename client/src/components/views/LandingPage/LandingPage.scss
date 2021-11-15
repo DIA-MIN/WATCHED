@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   padding: 3rem 5rem;
+  overflow: scroll;
 
   // TrailerPoster scss
   .trailerContent {
@@ -126,6 +127,7 @@
       row-gap: 3px;
       column-gap: 3px;
       font-size: 1.15rem;
+      margin-top: 2rem;
 
       .topChart-item {
         background: $navColor;
@@ -173,6 +175,43 @@
           &:hover {
             color: $heartColor;
           }
+        }
+      }
+    }
+  }
+
+  // MovieContent scss
+  .movieContent {
+    margin-top: 3rem;
+
+    .movieCategory {
+      margin-top: 2rem;
+      background: $navColor;
+      display: flex;
+      color: white;
+      font-size: 1.15rem;
+      font-weight: bold;
+
+      li {
+        padding: 1rem 3rem;
+        cursor: pointer;
+
+        &:hover {
+          color: $mainColor;
+          border-bottom: 3px solid $mainColor;
+        }
+      }
+    }
+
+    .movieList {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      row-gap: 1rem;
+      column-gap: 1rem;
+
+      .movieList-item {
+        img {
+          width: 100%;
         }
       }
     }
