@@ -1,13 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import {FaStar, FaPlus} from 'react-icons/fa';
 import {API_KEY, API_URL, IMAGE_BASE_URL} from '../../../Config';
+import Pagenation from 'react-js-pagination';
 
 function MovieChart({movies}) {
   const [CategoryMovies, setCategoryMovies] = useState([]);
+  const [Page, setPage] = useState(1);
+  const [Category, setCategory] = useState('');
 
   useEffect(() => {
     setCategoryMovies(movies);
   }, []);
+
+  useEffect(() => {
+    switch (Category) {
+      case 'popular':
+        loadPopularMovie();
+        break;
+      case 'rated':
+        loadTopRatedMovie();
+        break;
+      case 'upcoming':
+        loadUpcomingMovie();
+        break;
+      default:
+        console.log('default click :)');
+        loadPopularMovie();
+    }
+  }, [Page]);
+
+  const handlePageChange = (Page) => {
+    setPage(Page);
+  };
 
   const fetchCategoryMovies = (endpoint) => {
     fetch(endpoint)
@@ -18,15 +42,18 @@ function MovieChart({movies}) {
   };
 
   const loadPopularMovie = () => {
-    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=1`;
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=${Page}`;
+    setCategory('popular');
     fetchCategoryMovies(endpoint);
   };
   const loadTopRatedMovie = () => {
-    const endpoint = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=ko&page=1`;
+    const endpoint = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=ko&page=${Page}`;
+    setCategory('rated');
     fetchCategoryMovies(endpoint);
   };
   const loadUpcomingMovie = () => {
-    const endpoint = `${API_URL}movie/upcoming?api_key=${API_KEY}&language=ko&page=1`;
+    const endpoint = `${API_URL}movie/upcoming?api_key=${API_KEY}&language=ko&page=${Page}`;
+    setCategory('upcoming');
     fetchCategoryMovies(endpoint);
   };
 
@@ -63,6 +90,15 @@ function MovieChart({movies}) {
             </div>
           ))}
       </div>
+      <Pagenation
+        activePage={Page}
+        itemsCountPerPage={20}
+        totalItemsCount={300}
+        pageRangeDisplayed={5}
+        prevPageText={'‹'}
+        nextPageText={'›'}
+        onChange={handlePageChange}
+      />
     </div>
   );
 }
