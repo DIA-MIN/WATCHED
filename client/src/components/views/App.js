@@ -5,7 +5,7 @@ import RegisterPage from './RegisterPage/RegisterPage';
 import LandingPage from './LandingPage/LandingPage';
 import LoginPage from './LoginPage/LoginPage';
 import NavBar from './NavBar/NavBar';
-import MovieDetailPage from '../MovieDetailPage/MovieDetailPage';
+import MovieDetailPage from './MovieDetailPage/MovieDetailPage';
 
 function App() {
   return (

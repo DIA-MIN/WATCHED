@@ -1,0 +1,100 @@
+@import '../commons/commons.scss';
+
+.movieDetailContent {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+
+  .movieDetail-main {
+    padding: 3rem 5rem;
+    background-color: $bodyColor;
+
+    h1 {
+      color: #fff;
+      font-weight: bold;
+      font-size: 2.25rem;
+      margin-bottom: 0;
+    }
+
+    .movieDetail-sub {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      color: $CategorySubColor;
+      font-size: 1rem;
+      font-weight: bold;
+
+      span {
+        color: $mainColor;
+        margin-right: 7px;
+      }
+
+      .movieDetail-rate {
+        display: flex;
+        justify-self: self-end;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 5rem;
+
+        div:first-child {
+          color: #fff;
+        }
+
+        div:last-child {
+          display: flex;
+          align-items: center;
+
+          .rate-icon {
+            color: $rageColor;
+            font-size: 1.15rem;
+            margin-right: 5px;
+          }
+
+          span {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+
+    .movieDetail-view {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 3fr 7fr;
+      align-items: center;
+      column-gap: 10px;
+      border-radius: 5px;
+
+      div {
+        justify-self: flex-end;
+        position: relative;
+        img {
+          border: 2px solid $navColor;
+          max-width: 323px;
+          width: 100%;
+        }
+
+        .add-myPick-icon {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          color: #fff;
+          font-size: 2rem;
+          cursor: pointer;
+          transition: 300ms ease;
+
+          &:hover {
+            color: $heartColor;
+          }
+        }
+      }
+
+      .movieDetail-trailer {
+        max-width: 1024px;
+        justify-self: flex-start;
+        border: 2px solid $navColor;
+      }
+    }
+  }
+}
