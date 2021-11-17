@@ -37,13 +37,11 @@ function MovieTrailer(props) {
     fetch(endpoint)
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res);
         youtubeKeys.push(
           res.results.filter(
             (list) =>
-              // list.name === 'Official Trailer' ||
-              // list.name === 'Official Teaser'
               list.name.includes('Trailer') || list.name.includes('Teaser')
+            // list.name.includes('예고편') || list.name.includes('1차 예고편')
           )[0].key
         );
       });

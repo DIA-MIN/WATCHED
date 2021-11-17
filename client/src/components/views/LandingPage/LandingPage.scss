@@ -136,11 +136,18 @@
         justify-content: space-between;
         align-items: center;
         padding: 1.5rem;
-        cursor: pointer;
 
         .top-movie-left {
           display: flex;
           align-items: center;
+          cursor: pointer;
+          width: 100%;
+
+          &:hover {
+            .top-movie-info {
+              opacity: 0.6;
+            }
+          }
 
           .top-movie-rank {
             background: $mainColor;
@@ -232,12 +239,14 @@
           display: none;
           flex-direction: column;
           justify-content: center;
+          align-items: center;
           background-color: rgba(0, 0, 0, 0.6);
           text-align: center;
           color: white;
 
           h3 {
             font-size: 1.15rem;
+            font-weight: bold;
             color: white;
           }
 
@@ -254,6 +263,7 @@
             margin-top: 8px;
             padding: 10px;
             font-weight: bold;
+            width: 60%;
 
             &:hover {
               background: $mainColor;

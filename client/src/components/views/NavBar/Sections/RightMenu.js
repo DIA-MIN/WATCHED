@@ -51,6 +51,9 @@ function RightMenu(props) {
       <ul className={props.isClicked ? 'nav-menu active' : 'nav-menu'}>
         <li>
           <form className="search">
+            {/* Memo
+             * https://api.themoviedb.org/3/search/movie?api_key=###&query=검색할 영화 제목
+             */}
             <input />
             <FaSearch className="search-icon" />
           </form>

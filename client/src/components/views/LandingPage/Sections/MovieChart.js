@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {FaStar, FaPlus} from 'react-icons/fa';
 import {API_KEY, API_URL, IMAGE_BASE_URL} from '../../../Config';
 import Pagenation from 'react-js-pagination';
+import {withRouter} from 'react-router-dom';
 
-function MovieChart({movies}) {
+function MovieChart(props, {movies}) {
   const [CategoryMovies, setCategoryMovies] = useState([]);
   const [Page, setPage] = useState(1);
   const [Category, setCategory] = useState('');
@@ -85,7 +86,11 @@ function MovieChart({movies}) {
                     My Pick
                   </div>
                 </button>
-                <button>자세히</button>
+                <button
+                  onClick={() => props.history.push(`/movie/${movie.id}`)}
+                >
+                  자세히
+                </button>
               </div>
             </div>
           ))}
@@ -103,4 +108,4 @@ function MovieChart({movies}) {
   );
 }
 
-export default MovieChart;
+export default withRouter(MovieChart);

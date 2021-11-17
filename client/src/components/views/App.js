@@ -5,6 +5,7 @@ import RegisterPage from './RegisterPage/RegisterPage';
 import LandingPage from './LandingPage/LandingPage';
 import LoginPage from './LoginPage/LoginPage';
 import NavBar from './NavBar/NavBar';
+import MovieDetailPage from '../MovieDetailPage/MovieDetailPage';
 
 function App() {
   return (
@@ -15,6 +16,11 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route
+            exact
+            path="/movie/:movieId"
+            component={Auth(MovieDetailPage, null)}
+          />
         </Switch>
       </div>
     </Router>
