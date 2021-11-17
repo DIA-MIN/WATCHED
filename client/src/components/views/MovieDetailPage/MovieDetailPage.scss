@@ -1,33 +1,32 @@
 @import '../commons/commons.scss';
 
 .movieDetailContent {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
   overflow: scroll;
+  @extend .container;
 
   .movieDetail-main {
-    padding: 3rem 5rem;
-    background-color: $bodyColor;
-
-    h1 {
-      color: #fff;
-      font-weight: bold;
-      font-size: 2.25rem;
-      margin-bottom: 0;
-    }
+    padding: 3rem 5rem 1.5rem 5rem;
 
     .movieDetail-sub {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       align-items: center;
       color: $CategorySubColor;
-      font-size: 1rem;
+      font-size: 1.15rem;
       font-weight: bold;
 
-      span {
-        color: $mainColor;
-        margin-right: 7px;
+      div {
+        h1 {
+          color: #fff;
+          font-weight: bold;
+          font-size: 2.25rem;
+          margin-bottom: 0;
+        }
+
+        span {
+          color: $mainColor;
+          margin-right: 7px;
+        }
       }
 
       .movieDetail-rate {
@@ -37,17 +36,17 @@
         align-items: center;
         margin-left: 5rem;
 
-        div:first-child {
+        .movieDetail-rate-title {
           color: #fff;
         }
 
-        div:last-child {
+        .movieDetail-rate-score {
           display: flex;
           align-items: center;
 
           .rate-icon {
             color: $rageColor;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             margin-right: 5px;
           }
 
@@ -67,11 +66,11 @@
       border-radius: 5px;
 
       div {
-        justify-self: flex-end;
+        // justify-self: flex-end;
         position: relative;
         img {
           border: 2px solid $navColor;
-          max-width: 323px;
+          // max-width: 323px;
           width: 100%;
         }
 
@@ -91,9 +90,45 @@
       }
 
       .movieDetail-trailer {
-        max-width: 1024px;
-        justify-self: flex-start;
+        // max-width: 1024px;
+        // justify-self: flex-start;
         border: 2px solid $navColor;
+      }
+    }
+  }
+
+  .movieDetail-body {
+    padding: 0 5rem;
+    padding-bottom: 3rem;
+
+    .movieDetail-info {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+
+      li {
+        padding: 1.25rem 0;
+        border-bottom: 1px solid $CategorySubColor;
+      }
+
+      span {
+        font-weight: bold;
+        color: $mainColor;
+        margin-right: 10px;
+        font-size: 1rem;
+      }
+
+      .movieDetail-genre {
+        display: flex;
+        color: #fff;
+        font-size: 1rem;
+        div {
+          margin-right: 1rem;
+          font-weight: bold;
+          padding: 4px 1.25rem;
+          border: 2px solid $CategorySubColor;
+          border-radius: 20px;
+        }
       }
     }
   }
