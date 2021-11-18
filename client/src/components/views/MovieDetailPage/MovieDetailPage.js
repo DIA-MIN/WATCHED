@@ -4,12 +4,14 @@ import {API_KEY, API_URL, IMAGE_BASE_URL} from '../../Config';
 import MovieDetailHead from './Sections/MovieDetailHead';
 import MovieDetailTrailer from './Sections/MovieDetailTrailer';
 import MovieDetailInfo from './Sections/MovieDetailInfo';
+import {FaAngleRight, FaAngleDown} from 'react-icons/fa';
 
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId;
   const [Movie, setMovie] = useState([]);
   const [Cast, setCast] = useState([]);
   const [Trailer, setTrailer] = useState([]);
+  const [IsClamp, setIsClamp] = useState(false);
 
   useEffect(() => {
     const movieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=ko`;
@@ -33,7 +35,6 @@ function MovieDetailPage(props) {
     fetch(movieTrailer)
       .then((response) => response.json())
       .then((response) => {
-        console.log('movie Trailer', response);
         const videoKey = response.results.filter(
           (list) =>
             list.name.includes('Trailer') || list.name.includes('Teaser')
@@ -42,14 +43,48 @@ function MovieDetailPage(props) {
       });
   }, []);
 
+  const notImage = <div class="notImage">NO IMAGE</div>;
+
+  const onClampCast = () => {
+    setIsClamp(!IsClamp);
+  };
+
   return (
     <div className="movieDetailContent">
       <div className="movieDetail-main">
         <MovieDetailHead movie={Movie} />
         <MovieDetailTrailer movie={Movie} trailer={Trailer} />
-      </div>
-      <div className="movieDetail-body">
         <MovieDetailInfo movie={Movie} />
+
+        <div className="movieDetail-credits">
+          <h1 className="category">
+            <div className="ColBar"></div>출연
+            <button className="clamp-cast" onClick={onClampCast}>
+              자세히 {IsClamp ? <FaAngleDown /> : <FaAngleRight />}
+            </button>
+          </h1>
+          <p className="subCategory">다양한 출연진을 확인해보세요.</p>
+          {IsClamp ? (
+            <div className="movieDetail-castList">
+              {Cast.cast &&
+                Cast.cast.map((cast) => (
+                  <div className="movieDetail-cast">
+                    {cast.profile_path ? (
+                      <img src={`${IMAGE_BASE_URL}w92${cast.profile_path}`} />
+                    ) : (
+                      notImage
+                    )}
+                    <div className="castName">
+                      <span className="name">{cast.name}</span>
+                      <div className="character">
+                        <span>{cast.character}</span> 역
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

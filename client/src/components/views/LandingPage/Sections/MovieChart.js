@@ -25,7 +25,6 @@ function MovieChart(props, {movies}) {
         loadUpcomingMovie();
         break;
       default:
-        console.log('default click :)');
         loadPopularMovie();
     }
   }, [Page]);

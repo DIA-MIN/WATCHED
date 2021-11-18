@@ -19,7 +19,7 @@ function MovieDetailInfo({movie}) {
         <span>러닝타임</span> {movie.release_date}
       </li>
       <li>
-        <div className="movieDetail-overview">{movie.overview}</div>
+        <p className="movieDetail-overview">{movie.overview}</p>
       </li>
     </ul>
   );
