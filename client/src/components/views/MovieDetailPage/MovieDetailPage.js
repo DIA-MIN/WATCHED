@@ -5,6 +5,7 @@ import MovieDetailHead from './Sections/MovieDetailHead';
 import MovieDetailTrailer from './Sections/MovieDetailTrailer';
 import MovieDetailInfo from './Sections/MovieDetailInfo';
 import {FaAngleRight, FaAngleDown} from 'react-icons/fa';
+import MovieDetailReview from './Sections/MovieDetailReview';
 
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId;
@@ -85,6 +86,8 @@ function MovieDetailPage(props) {
             </div>
           ) : null}
         </div>
+
+        <MovieDetailReview movieId={movieId} />
       </div>
     </div>
   );
