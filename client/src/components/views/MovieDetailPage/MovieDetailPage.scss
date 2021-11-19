@@ -15,7 +15,7 @@
 
     .movieDetail-sub {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 6fr 4fr;
       align-items: center;
       color: $CategorySubColor;
       font-size: 1.15rem;
@@ -190,38 +190,25 @@
   .movieDetailContent {
     .movieDetail-main {
       width: 80%;
-    }
-    .movieDetail-credits {
-      margin-top: 3rem;
 
-      .movieDetail-castList {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        row-gap: 1rem;
-        .movieDetail-cast {
-          display: flex;
-          align-items: center;
+      .movieDetail-credits {
+        .movieDetail-castList {
+          grid-template-columns: repeat(2, 1fr);
 
-          img {
-            margin-right: 1.5rem;
-          }
+          .movieDetail-cast {
+            .castName {
+              .name {
+                font-size: 1rem;
+                font-weight: bold;
+              }
 
-          .castName {
-            display: flex;
-            flex-direction: column;
-            color: #fff;
-
-            .name {
-              font-size: 1.25rem;
-              font-weight: bold;
-            }
-
-            .character {
-              font-size: 1rem;
-              font-weight: bold;
-              color: $mainColor;
-              span {
-                color: $CategorySubColor;
+              .character {
+                font-size: 14px;
+                font-weight: bold;
+                color: $mainColor;
+                span {
+                  color: $CategorySubColor;
+                }
               }
             }
           }
@@ -235,6 +222,106 @@
   .movieDetailContent {
     .movieDetail-main {
       width: 90%;
+
+      .movieDetail-sub {
+        font-size: 14px;
+
+        div {
+          h1 {
+            font-size: 1.75rem;
+          }
+        }
+
+        .movieDetail-rate {
+          .movieDetail-rate-score {
+            .rate-icon {
+              font-size: 1rem;
+            }
+
+            span {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      .movieDetail-credits {
+        .movieDetail-castList {
+          grid-template-columns: repeat(2, 1fr);
+
+          .movieDetail-cast {
+            .castName {
+              .name {
+                font-size: 1rem;
+                font-weight: bold;
+              }
+
+              .character {
+                font-size: 14px;
+                font-weight: bold;
+                color: $mainColor;
+                span {
+                  color: $CategorySubColor;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movieDetailContent {
+    .movieDetail-main {
+      width: 90%;
+
+      .movieDetail-sub {
+        font-size: 12px;
+
+        div {
+          h1 {
+            font-size: 1.5rem;
+          }
+        }
+
+        .movieDetail-rate {
+          .movieDetail-rate-score {
+            .rate-icon {
+              font-size: 14px;
+            }
+
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      .movieDetail-credits {
+        .movieDetail-castList {
+          grid-template-columns: repeat(1, 1fr);
+
+          .movieDetail-cast {
+            .castName {
+              .name {
+                font-size: 1rem;
+                font-weight: bold;
+              }
+
+              .character {
+                font-size: 14px;
+                font-weight: bold;
+                color: $mainColor;
+                span {
+                  color: $CategorySubColor;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
