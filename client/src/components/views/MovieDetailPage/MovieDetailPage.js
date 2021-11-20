@@ -87,7 +87,7 @@ function MovieDetailPage(props) {
           ) : null}
         </div>
 
-        <MovieDetailReview movieId={movieId} />
+        <MovieDetailReview movieId={movieId} movie={Movie} />
       </div>
     </div>
   );

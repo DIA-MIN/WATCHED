@@ -1,12 +1,18 @@
 import React, {useState, useEffect} from 'react';
 
-function MovieDetailReview() {
+function MovieDetailReview({movieId, movie}) {
   const [RateScore, setRateScore] = useState(['5', '4', '3', '2', '1']);
   const [RateValue, setRateValue] = useState('');
+  const [Review, setReview] = useState('');
 
   const onRateChangeHandler = (e) => {
     console.log(e.currentTarget.value);
     setRateValue(e.currentTarget.value);
+  };
+
+  const onReviewChangeHandler = (e) => {
+    console.log(e.currentTarget.value);
+    setReview(e.currentTarget.value);
   };
 
   return (
@@ -26,6 +32,16 @@ function MovieDetailReview() {
           </>
         ))}
       </div>
+      <form>
+        <textarea
+          vlaue={Review}
+          onChange={onReviewChangeHandler}
+          placeholder={`${movie.title} 영화는 어떠셨나요?`}
+        ></textarea>
+        <button className={Review ? 'regist-btn clamp' : 'regist-btn'}>
+          등록하기
+        </button>
+      </form>
     </div>
   );
 }
