@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import axios from 'axios';
+import {message} from 'antd';
+import {withRouter} from 'react-router-dom';
 
-function MovieDetailReview({movieId, movie}) {
+function MovieDetailReview(props) {
+  const user = useSelector((state) => state.user);
   const [RateScore, setRateScore] = useState(['5', '4', '3', '2', '1']);
   const [RateValue, setRateValue] = useState('');
   const [Review, setReview] = useState('');
@@ -11,8 +16,33 @@ function MovieDetailReview({movieId, movie}) {
   };
 
   const onReviewChangeHandler = (e) => {
-    console.log(e.currentTarget.value);
     setReview(e.currentTarget.value);
+  };
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+
+    const variables = {
+      writer: user.userData._id,
+      movieId: props.movieId,
+      content: Review,
+      rate: RateValue,
+    };
+
+    if (!user.userData.isAuth) {
+      message.warn('로그인 후 이용 가능합니다.');
+    } else {
+      axios.post('/api/review/register', variables).then((response) => {
+        if (response.data.success) {
+          console.log(response.data);
+          setRateValue('');
+          setReview('');
+          message.success('감상평 등록이 완료되었습니다.');
+        } else {
+          alert('감상평 등록에 실패했습니다.');
+        }
+      });
+    }
   };
 
   return (
@@ -32,13 +62,16 @@ function MovieDetailReview({movieId, movie}) {
           </>
         ))}
       </div>
-      <form>
+      <form onSubmit={onSubmitForm}>
         <textarea
-          vlaue={Review}
+          value={Review}
           onChange={onReviewChangeHandler}
-          placeholder={`${movie.title} 영화는 어떠셨나요?`}
+          placeholder={`${props.movie.title} 영화는 어떠셨나요?`}
         ></textarea>
-        <button className={Review ? 'regist-btn clamp' : 'regist-btn'}>
+        <button
+          className={Review ? 'regist-btn clamp' : 'regist-btn'}
+          onClick={onSubmitForm}
+        >
           등록하기
         </button>
       </form>
@@ -46,4 +79,4 @@ function MovieDetailReview({movieId, movie}) {
   );
 }
 
-export default MovieDetailReview;
+export default withRouter(MovieDetailReview);

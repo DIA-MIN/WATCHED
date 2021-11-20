@@ -21,6 +21,7 @@ app.use(cookieParser());
 
 // Router
 app.use('/api/users', require('./routes/users'));
+app.use('/api/review', require('./routes/review'));
 
 const port = process.env.PORT || 5000;
 
