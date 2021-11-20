@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import './MovieDetailPage.scss';
 import {API_KEY, API_URL, IMAGE_BASE_URL} from '../../Config';
+import {FaAngleRight, FaAngleDown} from 'react-icons/fa';
 import MovieDetailHead from './Sections/MovieDetailHead';
 import MovieDetailTrailer from './Sections/MovieDetailTrailer';
 import MovieDetailInfo from './Sections/MovieDetailInfo';
-import {FaAngleRight, FaAngleDown} from 'react-icons/fa';
-import MovieDetailReview from './Sections/MovieDetailReview';
+import MovieDetailWriteReview from './Sections/MovieDetailWriteReview';
+import MovieDetailReviewList from './Sections/MovieDetailReviewList';
 
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId;
@@ -22,14 +23,12 @@ function MovieDetailPage(props) {
     fetch(movieInfo)
       .then((response) => response.json())
       .then((response) => {
-        console.log('movie detail', response);
         setMovie(response);
       });
 
     fetch(movieCast)
       .then((response) => response.json())
       .then((response) => {
-        console.log('movie cast', response);
         setCast(response);
       });
 
@@ -87,7 +86,8 @@ function MovieDetailPage(props) {
           ) : null}
         </div>
 
-        <MovieDetailReview movieId={movieId} movie={Movie} />
+        <MovieDetailWriteReview movieId={movieId} movie={Movie} />
+        <MovieDetailReviewList movieId={movieId} />
       </div>
     </div>
   );

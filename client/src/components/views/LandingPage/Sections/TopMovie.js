@@ -23,7 +23,7 @@ function TopMovie(props) {
 
       <div className="topChart">
         {Movies.map((movie, index) => (
-          <div className="topChart-item">
+          <div className="topChart-item" key={index}>
             <div
               className="top-movie-left"
               onClick={() => props.history.push(`/movie/${movie.id}`)}

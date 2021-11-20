@@ -58,7 +58,7 @@ function RightMenu(props) {
             <FaSearch className="search-icon" />
           </form>
         </li>
-        <li className="pickContent" onClick>
+        <li className="pickContent">
           <FaHeart className="heart-icon" />
           My Pick
         </li>

@@ -17,7 +17,6 @@ function LandingPage() {
     fetch(endpoint)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         setMovies([...response.results]);
       });
   };

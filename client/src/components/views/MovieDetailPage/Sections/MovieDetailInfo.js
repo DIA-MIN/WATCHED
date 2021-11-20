@@ -10,7 +10,10 @@ function MovieDetailInfo({movie}) {
   return (
     <ul className="movieDetail-info">
       <li className="movieDetail-genre">
-        {movie.genres && movie.genres.map((genre) => <div>{genre.name}</div>)}
+        {movie.genres &&
+          movie.genres.map((genre, index) => (
+            <div key={index}>{genre.name}</div>
+          ))}
       </li>
       <li>
         <span>개봉</span> {movie.release_date}

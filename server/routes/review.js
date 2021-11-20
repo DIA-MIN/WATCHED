@@ -11,4 +11,13 @@ router.post('/register', (req, res) => {
   });
 });
 
+router.post('/getReviews', (req, res) => {
+  Review.find({movieId: req.body.movieId})
+    .populate('writer')
+    .exec((err, comments) => {
+      if (err) return res.status(400).json({success: false, err});
+      return res.status(200).json({success: true, comments});
+    });
+});
+
 module.exports = router;

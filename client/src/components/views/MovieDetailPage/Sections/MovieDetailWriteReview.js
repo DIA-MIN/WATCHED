@@ -4,14 +4,13 @@ import axios from 'axios';
 import {message} from 'antd';
 import {withRouter} from 'react-router-dom';
 
-function MovieDetailReview(props) {
+function MovieDetailWriteReview(props) {
   const user = useSelector((state) => state.user);
   const [RateScore, setRateScore] = useState(['5', '4', '3', '2', '1']);
   const [RateValue, setRateValue] = useState('');
   const [Review, setReview] = useState('');
 
   const onRateChangeHandler = (e) => {
-    console.log(e.currentTarget.value);
     setRateValue(e.currentTarget.value);
   };
 
@@ -34,7 +33,7 @@ function MovieDetailReview(props) {
     } else {
       axios.post('/api/review/register', variables).then((response) => {
         if (response.data.success) {
-          console.log(response.data);
+          // console.log(response.data);
           setRateValue('');
           setReview('');
           message.success('감상평 등록이 완료되었습니다.');
@@ -48,9 +47,9 @@ function MovieDetailReview(props) {
   return (
     <div className="MovieDetail-review">
       <h1>감상평 작성하기</h1>
-      <div class="movie-rating">
-        {RateScore.map((score) => (
-          <>
+      <div className="movie-rating">
+        {RateScore.map((score, index) => (
+          <React.Fragment key={index}>
             <input
               type="radio"
               id={`${score}-stars`}
@@ -59,7 +58,7 @@ function MovieDetailReview(props) {
               onChange={onRateChangeHandler}
             />
             <label for={`${score}-stars`}>★</label>
-          </>
+          </React.Fragment>
         ))}
       </div>
       <form onSubmit={onSubmitForm}>
@@ -79,4 +78,4 @@ function MovieDetailReview(props) {
   );
 }
 
-export default withRouter(MovieDetailReview);
+export default withRouter(MovieDetailWriteReview);
