@@ -278,6 +278,8 @@
       ul {
         display: flex;
         flex-direction: column;
+        max-height: 1024px;
+        overflow: scroll;
 
         li {
           display: flex;
@@ -352,6 +354,39 @@
             p {
               color: #fff;
               margin-bottom: 0;
+            }
+
+            div {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              textarea {
+                color: black;
+                margin-top: 1.5rem;
+                width: 100%;
+                padding: 1rem;
+                resize: none;
+                border: 1px solid #fff;
+
+                &:focus {
+                  outline: 3px solid $mainColor;
+                }
+              }
+
+              button {
+                margin-top: 2rem;
+                border: 2px solid $mainColor;
+                color: $mainColor;
+                font-size: 1rem;
+                font-weight: bold;
+                padding: 1rem 5rem;
+
+                &:hover {
+                  background: $mainColor;
+                  color: $bodyColor;
+                }
+              }
             }
           }
         }

@@ -35,4 +35,20 @@ router.post('/writeCheck', (req, res) => {
   );
 });
 
+router.post('/updateReview', (req, res) => {
+  Review.findOneAndUpdate(
+    {_id: req.body._id},
+    {content: req.body.content}
+  ).exec((err, review) => {
+    if (err) return res.status(400).json({updateSuccess: false, err});
+
+    Review.find({_id: review._id})
+      .populate('writer')
+      .exec((err, comments) => {
+        if (err) return res.status(400).json({updateSuccess: false, err});
+        return res.status(200).json({updateSuccess: true, comments});
+      });
+  });
+});
+
 module.exports = router;

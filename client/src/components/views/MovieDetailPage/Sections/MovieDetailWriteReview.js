@@ -31,6 +31,14 @@ function MovieDetailWriteReview(props) {
     setReviewList(ReviewList.concat(newReviews));
   };
 
+  const updateReview = (newReviews) => {
+    setReviewList(
+      ReviewList.map((review) =>
+        review._id === newReviews._id ? newReviews : review
+      )
+    );
+  };
+
   const onRateChangeHandler = (e) => {
     setRateValue(e.currentTarget.value);
   };
@@ -111,6 +119,7 @@ function MovieDetailWriteReview(props) {
       <MovieDetailReviewList
         reviewList={ReviewList}
         writer={user.userData._id}
+        updateReview={updateReview}
       />
     </div>
   );
