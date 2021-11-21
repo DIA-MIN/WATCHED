@@ -3,12 +3,33 @@ import {useSelector} from 'react-redux';
 import axios from 'axios';
 import {message} from 'antd';
 import {withRouter} from 'react-router-dom';
+import MovieDetailReviewList from './MovieDetailReviewList';
 
 function MovieDetailWriteReview(props) {
   const user = useSelector((state) => state.user);
   const [RateScore, setRateScore] = useState(['5', '4', '3', '2', '1']);
   const [RateValue, setRateValue] = useState('');
   const [Review, setReview] = useState('');
+  const [ReviewList, setReviewList] = useState([]);
+
+  useEffect(() => {
+    const variables = {
+      movieId: props.movieId,
+      writer: user.userData._id,
+    };
+    axios.post('/api/review/getReviews', variables).then((response) => {
+      if (response.data.success) {
+        console.log(response.data.comments);
+        setReviewList(response.data.comments);
+      } else {
+        alert('감상평 리스트를 불러오는데 실패했습니다.');
+      }
+    });
+  }, []);
+
+  const refreshReview = (newReviews) => {
+    setReviewList(ReviewList.concat(newReviews));
+  };
 
   const onRateChangeHandler = (e) => {
     setRateValue(e.currentTarget.value);
@@ -31,14 +52,27 @@ function MovieDetailWriteReview(props) {
     if (!user.userData.isAuth) {
       message.warn('로그인 후 이용 가능합니다.');
     } else {
-      axios.post('/api/review/register', variables).then((response) => {
+      axios.post('/api/review/writeCheck', variables).then((response) => {
         if (response.data.success) {
-          // console.log(response.data);
-          setRateValue('');
-          setReview('');
-          message.success('감상평 등록이 완료되었습니다.');
+          if (response.data.writer) {
+            message.warn('감상평은 영화별 1개만 작성 가능합니다.');
+            setRateValue('');
+            setReview('');
+          } else {
+            axios.post('/api/review/register', variables).then((response) => {
+              if (response.data.success) {
+                console.log('review write ==>', response.data);
+                message.success('감상평 등록이 완료되었습니다.');
+                refreshReview(response.data.comments);
+                setRateValue('');
+                setReview('');
+              } else {
+                alert('감상평 등록에 실패했습니다.');
+              }
+            });
+          }
         } else {
-          alert('감상평 등록에 실패했습니다.');
+          alert('작성자를 불러오는데 실패하셨습니다.');
         }
       });
     }
@@ -74,6 +108,10 @@ function MovieDetailWriteReview(props) {
           등록하기
         </button>
       </form>
+      <MovieDetailReviewList
+        reviewList={ReviewList}
+        writer={user.userData._id}
+      />
     </div>
   );
 }

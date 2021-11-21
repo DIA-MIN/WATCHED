@@ -264,10 +264,16 @@
     }
 
     .MovieDetail-reviewList {
-      margin-top: 3rem;
-      padding: 3rem;
-      background: $navColor;
-      border-radius: 5px;
+      width: 100%;
+      margin-top: 10px;
+      margin-top: 1.5rem;
+      border-top: 1px solid #fff;
+
+      h2 {
+        color: $mainColor;
+        margin-bottom: 0;
+        text-align: center;
+      }
 
       ul {
         display: flex;
@@ -279,6 +285,7 @@
           border: 1px solid #fff;
           border-radius: 5px;
           padding: 1rem 1.25rem;
+          margin-top: 1.5rem;
 
           .review-profile-container {
             display: flex;
@@ -324,12 +331,27 @@
                 div:nth-child(2) {
                   font-weight: bold;
                   color: $CategorySubColor;
-
-                  span {
-                    margin-right: 12px;
+                }
+                div:nth-child(3) {
+                  margin-left: 3rem;
+                  color: $mainColor;
+                  font-weight: bold;
+                  button {
+                    margin-right: 8px;
+                    transition: 300ms ease;
+                    &:hover {
+                      opacity: 0.7;
+                    }
                   }
                 }
               }
+            }
+          }
+          .review {
+            margin-top: 1rem;
+            p {
+              color: #fff;
+              margin-bottom: 0;
             }
           }
         }

@@ -6,7 +6,6 @@ import MovieDetailHead from './Sections/MovieDetailHead';
 import MovieDetailTrailer from './Sections/MovieDetailTrailer';
 import MovieDetailInfo from './Sections/MovieDetailInfo';
 import MovieDetailWriteReview from './Sections/MovieDetailWriteReview';
-import MovieDetailReviewList from './Sections/MovieDetailReviewList';
 
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId;
@@ -87,7 +86,6 @@ function MovieDetailPage(props) {
         </div>
 
         <MovieDetailWriteReview movieId={movieId} movie={Movie} />
-        <MovieDetailReviewList movieId={movieId} />
       </div>
     </div>
   );
