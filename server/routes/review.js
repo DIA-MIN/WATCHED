@@ -38,7 +38,7 @@ router.post('/writeCheck', (req, res) => {
 router.post('/updateReview', (req, res) => {
   Review.findOneAndUpdate(
     {_id: req.body._id},
-    {content: req.body.content}
+    {content: req.body.content, rate: req.body.rate}
   ).exec((err, review) => {
     if (err) return res.status(400).json({updateSuccess: false, err});
 
@@ -48,6 +48,13 @@ router.post('/updateReview', (req, res) => {
         if (err) return res.status(400).json({updateSuccess: false, err});
         return res.status(200).json({updateSuccess: true, comments});
       });
+  });
+});
+
+router.post('/deleteReview', (req, res) => {
+  Review.findOneAndDelete({_id: req.body._id}).exec((err, review) => {
+    if (err) return res.status(400).json({deleteSuccess: false, err});
+    return res.status(200).json({deleteSuccess: true, review});
   });
 });
 

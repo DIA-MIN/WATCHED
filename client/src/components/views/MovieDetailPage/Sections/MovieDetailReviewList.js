@@ -2,14 +2,22 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {Avatar, message} from 'antd';
 import axios from 'axios';
+import MovieRating from './MovieRating';
 
-function MovieDetailReviewList({reviewList, writer, updateReview}) {
+function MovieDetailReviewList({
+  reviewList,
+  writer,
+  updateReview,
+  deleteReview,
+}) {
   const [Review, setReview] = useState([]);
-  const [RateScore, setRateScore] = useState(['5', '4', '3', '2', '1']);
+  const [RateValue, setRateValue] = useState('');
   const [IsUpdate, setIsUpdate] = useState(false);
   const [UpdateReview, setUpdateReview] = useState('');
 
-  const onChangeHandler = () => {};
+  const refreshRateValue = (getRate) => {
+    setRateValue(getRate);
+  };
 
   const onUpdateReviewClamp = (content) => {
     setIsUpdate(!IsUpdate);
@@ -25,6 +33,7 @@ function MovieDetailReviewList({reviewList, writer, updateReview}) {
     const variables = {
       _id: reviewId,
       content: UpdateReview,
+      rate: RateValue,
     };
     if (check) {
       axios.post('/api/review/updateReview', variables).then((response) => {
@@ -34,6 +43,24 @@ function MovieDetailReviewList({reviewList, writer, updateReview}) {
           message.success('감상평 수정이 완료되었습니다.');
         } else {
           alert('감상평을 수정하는데 실패하셨습니다.');
+        }
+      });
+    }
+  };
+
+  const onDeleteReview = (reviewId) => {
+    const check = window.confirm('해당 감상평을 정말로 삭제하시겠습니까?');
+    const variables = {
+      _id: reviewId,
+    };
+    if (check) {
+      axios.post('/api/review/deleteReview', variables).then((response) => {
+        if (response.data.deleteSuccess) {
+          console.log(response.data);
+          deleteReview(response.data.review._id);
+          message.success('감상평이 성공적으로 삭제되었습니다.');
+        } else {
+          alert('감상평 삭제에 실패하였습니다.');
         }
       });
     }
@@ -55,19 +82,11 @@ function MovieDetailReviewList({reviewList, writer, updateReview}) {
                     alt="profileimg"
                   />
                   <div className="review-profile-info">
-                    <div className="review-rating">
-                      {RateScore.map((score, index) => (
-                        <React.Fragment key={index}>
-                          <input
-                            type="radio"
-                            id={`${score}-review-stars`}
-                            checked={String(review.rate) === score}
-                            onChange={onChangeHandler}
-                          />
-                          <label for={`${score}-review-stars`}>★</label>
-                        </React.Fragment>
-                      ))}
-                    </div>
+                    <MovieRating
+                      // refreshRateValue={refreshRateValue}
+                      rateId={'review-stars'}
+                      rateValue={String(review.rate)}
+                    />
                     <div className="review-name">
                       <div>{review.writer.name}</div>
                       <div>
@@ -80,7 +99,9 @@ function MovieDetailReviewList({reviewList, writer, updateReview}) {
                           >
                             수정
                           </button>
-                          <button>삭제</button>
+                          <button onClick={() => onDeleteReview(review._id)}>
+                            삭제
+                          </button>
                         </div>
                       ) : null}
                     </div>
@@ -89,6 +110,11 @@ function MovieDetailReviewList({reviewList, writer, updateReview}) {
                 <div className="review">
                   {writer === review.writer._id && IsUpdate ? (
                     <div>
+                      <MovieRating
+                        refreshRateValue={refreshRateValue}
+                        rateId={'reviewUpdate-stars'}
+                        rateValue={RateValue}
+                      />
                       <textarea
                         value={UpdateReview}
                         onChange={onReviewChange}

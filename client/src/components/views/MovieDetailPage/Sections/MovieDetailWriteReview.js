@@ -4,11 +4,12 @@ import axios from 'axios';
 import {message} from 'antd';
 import {withRouter} from 'react-router-dom';
 import MovieDetailReviewList from './MovieDetailReviewList';
+import MovieRating from './MovieRating';
 
 function MovieDetailWriteReview(props) {
   const user = useSelector((state) => state.user);
-  const [RateScore, setRateScore] = useState(['5', '4', '3', '2', '1']);
   const [RateValue, setRateValue] = useState('');
+  const [IsRate, setIsRate] = useState(false);
   const [Review, setReview] = useState('');
   const [ReviewList, setReviewList] = useState([]);
 
@@ -39,8 +40,13 @@ function MovieDetailWriteReview(props) {
     );
   };
 
-  const onRateChangeHandler = (e) => {
-    setRateValue(e.currentTarget.value);
+  const deleteReview = (deleteReviewId) => {
+    console.log(ReviewList);
+    setReviewList(ReviewList.filter((review) => review._id !== deleteReviewId));
+  };
+
+  const refreshRateValue = (getRate) => {
+    setRateValue(getRate);
   };
 
   const onReviewChangeHandler = (e) => {
@@ -69,10 +75,10 @@ function MovieDetailWriteReview(props) {
           } else {
             axios.post('/api/review/register', variables).then((response) => {
               if (response.data.success) {
-                console.log('review write ==>', response.data);
                 message.success('감상평 등록이 완료되었습니다.');
                 refreshReview(response.data.comments);
                 setRateValue('');
+                setIsRate(!IsRate);
                 setReview('');
               } else {
                 alert('감상평 등록에 실패했습니다.');
@@ -89,20 +95,11 @@ function MovieDetailWriteReview(props) {
   return (
     <div className="MovieDetail-review">
       <h1>감상평 작성하기</h1>
-      <div className="movie-rating">
-        {RateScore.map((score, index) => (
-          <React.Fragment key={index}>
-            <input
-              type="radio"
-              id={`${score}-stars`}
-              value={score}
-              checked={RateValue === score}
-              onChange={onRateChangeHandler}
-            />
-            <label for={`${score}-stars`}>★</label>
-          </React.Fragment>
-        ))}
-      </div>
+      <MovieRating
+        refreshRateValue={refreshRateValue}
+        rateId={'stars'}
+        rateValue={RateValue}
+      />
       <form onSubmit={onSubmitForm}>
         <textarea
           value={Review}
@@ -120,6 +117,7 @@ function MovieDetailWriteReview(props) {
         reviewList={ReviewList}
         writer={user.userData._id}
         updateReview={updateReview}
+        deleteReview={deleteReview}
       />
     </div>
   );
