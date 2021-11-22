@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
+import React, {useState} from 'react';
 import {Avatar, message} from 'antd';
 import axios from 'axios';
 import MovieRating from './MovieRating';
+import Recommend from './Recommend';
 
 function MovieDetailReviewList({
   reviewList,
@@ -124,7 +124,10 @@ function MovieDetailReviewList({
                       </button>
                     </div>
                   ) : (
-                    <p>{review.content}</p>
+                    <>
+                      <p>{review.content}</p>
+                      <Recommend reviewId={review._id} />
+                    </>
                   )}
                 </div>
               </li>

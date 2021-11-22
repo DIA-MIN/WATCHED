@@ -357,6 +357,39 @@
               margin-bottom: 0;
             }
 
+            .recommend-btn {
+              margin-top: 1rem;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-end;
+              align-items: center;
+
+              .recommend {
+                display: flex;
+                flex-direction: row;
+                border: 2px solid $mainColor;
+                color: $mainColor;
+                border-radius: 25px;
+                padding: 6px 14px;
+                cursor: pointer;
+
+                .recommend-icon {
+                  margin-right: 10px;
+                  font-size: 14px;
+                }
+
+                span {
+                  font-size: 14px;
+                  font-weight: bold;
+                }
+              }
+
+              .recommend.clamp {
+                background: $mainColor;
+                color: $bodyColor;
+              }
+            }
+
             div {
               display: flex;
               flex-direction: column;
