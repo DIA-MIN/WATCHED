@@ -85,7 +85,6 @@
           top: 1rem;
           right: 1rem;
           color: #fff;
-          font-size: 2rem;
           cursor: pointer;
           transition: 300ms ease;
 
@@ -275,7 +274,26 @@
         text-align: center;
       }
 
-      ul {
+      .review-sorting {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        background: $bodyColor;
+
+        li {
+          color: $mainColor;
+          font-weight: bold;
+          padding: 1rem 3rem;
+          cursor: pointer;
+
+          &:hover {
+            color: $mainColor;
+            border-bottom: 3px solid $mainColor;
+          }
+        }
+      }
+
+      .review-container {
         display: flex;
         flex-direction: column;
         max-height: 1024px;
@@ -428,7 +446,6 @@
               }
 
               button {
-                margin-top: 2rem;
                 border: 2px solid $mainColor;
                 color: $mainColor;
                 font-size: 1rem;

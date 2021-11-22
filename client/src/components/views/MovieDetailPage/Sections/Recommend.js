@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {FaThumbsUp} from 'react-icons/fa';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
+import {message} from 'antd';
 
 function Recommend({reviewId}) {
   const user = useSelector((state) => state.user);
@@ -30,24 +31,28 @@ function Recommend({reviewId}) {
   }, []);
 
   const onClickRecommend = () => {
-    if (IsRecommend) {
-      axios.post('/api/recommend/unRecommend', variables).then((response) => {
-        if (response.data.deleteSuccess) {
-          setRecommend(Recommend - 1);
-          setIsRecommend(!IsRecommend);
-        } else {
-          alert('해당 감상평 추천 취소에 실패하셨습니다.');
-        }
-      });
+    if (user.userData.isAuth) {
+      if (IsRecommend) {
+        axios.post('/api/recommend/unRecommend', variables).then((response) => {
+          if (response.data.deleteSuccess) {
+            setRecommend(Recommend - 1);
+            setIsRecommend(!IsRecommend);
+          } else {
+            alert('해당 감상평 추천 취소에 실패하셨습니다.');
+          }
+        });
+      } else {
+        axios.post('/api/recommend/onRecommend', variables).then((response) => {
+          if (response.data.success) {
+            setRecommend(Recommend + 1);
+            setIsRecommend(!IsRecommend);
+          } else {
+            alert('해당 감상평 추천에 실패하셨습니다.');
+          }
+        });
+      }
     } else {
-      axios.post('/api/recommend/onRecommend', variables).then((response) => {
-        if (response.data.success) {
-          setRecommend(Recommend + 1);
-          setIsRecommend(!IsRecommend);
-        } else {
-          alert('해당 감상평 추천에 실패하셨습니다.');
-        }
-      });
+      message.warn('해당 기능은 로그인 이후에 이용 가능합니다.');
     }
   };
 

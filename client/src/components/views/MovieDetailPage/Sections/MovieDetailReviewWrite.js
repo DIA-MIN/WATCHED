@@ -3,21 +3,21 @@ import {useSelector} from 'react-redux';
 import axios from 'axios';
 import {message} from 'antd';
 import {withRouter} from 'react-router-dom';
+import MovieRating from '../../commons/MovieRating';
 import MovieDetailReviewList from './MovieDetailReviewList';
-import MovieRating from './MovieRating';
 
-function MovieDetailWriteReview(props) {
+function MovieDetailReviewWrite(props) {
   const user = useSelector((state) => state.user);
   const [RateValue, setRateValue] = useState('');
   const [IsRate, setIsRate] = useState(false);
   const [Review, setReview] = useState('');
   const [ReviewList, setReviewList] = useState([]);
 
+  const variables = {
+    movieId: props.movieId,
+    writer: user.userData._id,
+  };
   useEffect(() => {
-    const variables = {
-      movieId: props.movieId,
-      writer: user.userData._id,
-    };
     axios.post('/api/review/getReviews', variables).then((response) => {
       if (response.data.success) {
         console.log(response.data.comments);
@@ -92,6 +92,37 @@ function MovieDetailWriteReview(props) {
     }
   };
 
+  const loadReviewRegist = () => {
+    axios.post('/api/review/getReviews', variables).then((response) => {
+      if (response.data.success) {
+        console.log('등록순', response.data.comments);
+        setReviewList(response.data.comments);
+      } else {
+        alert('감상평 리스트를 불러오는데 실패했습니다.');
+      }
+    });
+  };
+  const loadReviewRating = () => {
+    axios.post('/api/review/getReviewsRating', variables).then((response) => {
+      if (response.data.success) {
+        console.log('평가순', response.data.comments);
+        setReviewList(response.data.comments);
+      } else {
+        alert('감상평 리스트를 불러오는데 실패했습니다.');
+      }
+    });
+  };
+  const loadReviewMy = () => {
+    axios.post('/api/review/getReviewsMy', variables).then((response) => {
+      if (response.data.success) {
+        console.log('내리뷰', response.data.comments);
+        setReviewList(response.data.comments);
+      } else {
+        alert('감상평 리스트를 불러오는데 실패했습니다.');
+      }
+    });
+  };
+
   return (
     <div className="MovieDetail-review">
       <h1>감상평 작성하기</h1>
@@ -116,11 +147,15 @@ function MovieDetailWriteReview(props) {
       <MovieDetailReviewList
         reviewList={ReviewList}
         writer={user.userData._id}
+        isLogin={user.userData.isAuth}
         updateReview={updateReview}
         deleteReview={deleteReview}
+        loadReviewRegist={loadReviewRegist}
+        loadReviewRating={loadReviewRating}
+        loadReviewMy={loadReviewMy}
       />
     </div>
   );
 }
 
-export default withRouter(MovieDetailWriteReview);
+export default withRouter(MovieDetailReviewWrite);

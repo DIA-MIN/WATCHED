@@ -1,14 +1,18 @@
 import React, {useState} from 'react';
 import {Avatar, message} from 'antd';
 import axios from 'axios';
-import MovieRating from './MovieRating';
+import MovieRating from '../../commons/MovieRating';
 import Recommend from './Recommend';
 
 function MovieDetailReviewList({
   reviewList,
   writer,
+  isLogin,
   updateReview,
   deleteReview,
+  loadReviewRegist,
+  loadReviewRating,
+  loadReviewMy,
 }) {
   const [Review, setReview] = useState([]);
   const [RateValue, setRateValue] = useState('');
@@ -66,10 +70,29 @@ function MovieDetailReviewList({
     }
   };
 
+  const sortRegist = () => {
+    loadReviewRegist();
+  };
+  const sortRating = () => {
+    loadReviewRating();
+  };
+  const sortMy = () => {
+    if (isLogin) {
+      loadReviewMy();
+    } else {
+      message.warn('로그인이 필요합니다.');
+    }
+  };
+
   if (reviewList.length !== 0) {
     return (
       <div className="MovieDetail-reviewList">
-        <ul>
+        <ul className="review-sorting">
+          <li onClick={sortRegist}>등록순</li>
+          <li onClick={sortRating}>평점순</li>
+          <li onClick={sortMy}>MY</li>
+        </ul>
+        <ul className="review-container">
           {reviewList &&
             reviewList.map((review, index) => (
               <li key={index}>

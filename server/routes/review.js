@@ -19,6 +19,33 @@ router.post('/register', (req, res) => {
 
 router.post('/getReviews', (req, res) => {
   Review.find({movieId: req.body.movieId})
+    .sort({date: 1})
+    .populate('writer')
+    .exec((err, comments) => {
+      if (err) return res.status(400).json({success: false, err});
+      return res.status(200).json({success: true, comments});
+    });
+});
+router.post('/getReviewsRating', (req, res) => {
+  Review.find({movieId: req.body.movieId})
+    .sort({rate: -1})
+    .populate('writer')
+    .exec((err, comments) => {
+      if (err) return res.status(400).json({success: false, err});
+      return res.status(200).json({success: true, comments});
+    });
+});
+// router.post('/getReviewsRecommend', (req, res) => {
+//   Review.find({movieId: req.body.movieId})
+//     .sort({date: 1})
+//     .populate('writer')
+//     .exec((err, comments) => {
+//       if (err) return res.status(400).json({success: false, err});
+//       return res.status(200).json({success: true, comments});
+//     });
+// });
+router.post('/getReviewsMy', (req, res) => {
+  Review.find({movieId: req.body.movieId, writer: req.body.writer})
     .populate('writer')
     .exec((err, comments) => {
       if (err) return res.status(400).json({success: false, err});
