@@ -42,7 +42,7 @@ function MovieDetailPage(props) {
       });
   }, []);
 
-  const notImage = <div class="notImage">NO IMAGE</div>;
+  const notImage = <div className="notImage">NO IMAGE</div>;
 
   const onClampCast = () => {
     setIsClamp(!IsClamp);
@@ -66,8 +66,8 @@ function MovieDetailPage(props) {
           {IsClamp ? (
             <div className="movieDetail-castList">
               {Cast.cast &&
-                Cast.cast.map((cast) => (
-                  <div className="movieDetail-cast">
+                Cast.cast.map((cast, index) => (
+                  <div className="movieDetail-cast" key={index}>
                     {cast.profile_path ? (
                       <img src={`${IMAGE_BASE_URL}w92${cast.profile_path}`} />
                     ) : (

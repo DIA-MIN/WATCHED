@@ -6,7 +6,8 @@ import LandingPage from './LandingPage/LandingPage';
 import LoginPage from './LoginPage/LoginPage';
 import NavBar from './NavBar/NavBar';
 import MovieDetailPage from './MovieDetailPage/MovieDetailPage';
-import SearchResult from './SearchResult/SearchResult';
+import SearchResultPage from './SearchResultPage/SearchResultPage';
+import MyPickPage from './MyPickPage/MyPickPage';
 
 function App() {
   return (
@@ -22,7 +23,12 @@ function App() {
             path="/movie/:movieId"
             component={Auth(MovieDetailPage, null)}
           />
-          <Route exact path="/search" component={Auth(SearchResult, null)} />
+          <Route
+            exact
+            path="/search"
+            component={Auth(SearchResultPage, null)}
+          />
+          <Route exact path="/mypick" component={Auth(MyPickPage, true)} />
         </Switch>
       </div>
     </Router>

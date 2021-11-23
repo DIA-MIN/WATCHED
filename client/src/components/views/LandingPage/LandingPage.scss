@@ -183,6 +183,10 @@
             color: $heartColor;
           }
         }
+
+        .add-myPick-icon.clamp {
+          color: $heartColor;
+        }
       }
     }
   }
@@ -270,16 +274,21 @@
               color: $bodyColor;
               border-radius: 5px;
             }
+          }
+          .movieList-item-myPick {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            .movieList-item-myPick {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-
-              .plus-icon {
-                margin-right: 5px;
-              }
+            .plus-icon {
+              margin-right: 5px;
             }
+          }
+
+          .movieList-item-myPick.clamp {
+            background: $heartColor;
+            color: $bodyColor;
+            border-radius: 5px;
           }
         }
       }

@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux';
 import {Avatar} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {API_URL, API_KEY} from './../../../Config';
-import Search from 'antd/lib/transfer/search';
 
 function RightMenu(props) {
   const user = useSelector((state) => state.user);
@@ -14,7 +13,6 @@ function RightMenu(props) {
   const onClickLogout = () => {
     axios.get('/api/users/logout').then((response) => {
       if (response.data.success) {
-        console.log(response.data);
         localStorage.clear();
 
         props.history.push('/login');
@@ -77,14 +75,14 @@ function RightMenu(props) {
       <ul className={props.isClicked ? 'nav-menu active' : 'nav-menu'}>
         <li>
           <form className="search">
-            {/* Memo
-             * https://api.themoviedb.org/3/search/movie?api_key=###&query=검색할 영화 제목
-             */}
             <input value={SearchMovie} onChange={onChangeSearch} />
             <FaSearch className="search-icon" onClick={onSearchMovie} />
           </form>
         </li>
-        <li className="pickContent">
+        <li
+          className="pickContent"
+          onClick={() => props.history.push('/mypick')}
+        >
           <FaHeart className="heart-icon" />
           My Pick
         </li>

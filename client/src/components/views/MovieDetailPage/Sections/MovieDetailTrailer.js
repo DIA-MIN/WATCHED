@@ -7,7 +7,7 @@ function MovieDetailTrailer({movie, trailer}) {
     <div className="movieDetail-view">
       <div>
         <img src={`${IMAGE_BASE_URL}w500${movie.poster_path}`} />
-        <FaHeart className="add-myPick-icon" />
+        <FaHeart className="add-myPick-icon-DetailTrailer" />
       </div>
       <iframe
         width="100%"

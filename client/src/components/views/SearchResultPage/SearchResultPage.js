@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import './SearchResult.scss';
-import {IMAGE_BASE_URL} from './../../Config';
+import './SearchResultPage.scss';
+import {IMAGE_BASE_URL} from '../../Config';
 import {FaStar, FaPlus} from 'react-icons/fa';
 import {useLocation} from 'react-router';
 import {withRouter} from 'react-router-dom';
 
-function SearchResult(props) {
+function SearchResultPage(props) {
   const location = useLocation();
   const [Movies, setMovies] = useState([]);
   const [SearchMovieTitle, setSearchMovieTitle] = useState('');
@@ -71,4 +71,4 @@ function SearchResult(props) {
   }
 }
 
-export default withRouter(SearchResult);
+export default withRouter(SearchResultPage);

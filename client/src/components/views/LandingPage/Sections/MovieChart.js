@@ -3,6 +3,7 @@ import {FaStar, FaPlus} from 'react-icons/fa';
 import {API_KEY, API_URL, IMAGE_BASE_URL} from '../../../Config';
 import Pagenation from 'react-js-pagination';
 import {withRouter} from 'react-router-dom';
+import MoviePick from './MoviePick';
 
 function MovieChart(props, {movies}) {
   const [CategoryMovies, setCategoryMovies] = useState([]);
@@ -79,12 +80,12 @@ function MovieChart(props, {movies}) {
                   <FaStar className="star-icon" />
                   {movie.vote_average}
                 </div>
-                <button>
-                  <div className="movieList-item-myPick">
-                    <FaPlus className="plus-icon" />
-                    My Pick
-                  </div>
-                </button>
+                <MoviePick
+                  MovieChart
+                  movieId={movie.id}
+                  movieRate={movie.vote_average}
+                  moviePoster={movie.poster_path}
+                />
                 <button
                   onClick={() => props.history.push(`/movie/${movie.id}`)}
                 >

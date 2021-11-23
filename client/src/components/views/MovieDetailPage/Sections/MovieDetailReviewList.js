@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Avatar, message} from 'antd';
 import axios from 'axios';
 import MovieRating from '../../commons/MovieRating';
@@ -13,8 +13,8 @@ function MovieDetailReviewList({
   loadReviewRegist,
   loadReviewRating,
   loadReviewMy,
+  setReviewList,
 }) {
-  const [Review, setReview] = useState([]);
   const [RateValue, setRateValue] = useState('');
   const [IsUpdate, setIsUpdate] = useState(false);
   const [UpdateReview, setUpdateReview] = useState('');
@@ -60,7 +60,6 @@ function MovieDetailReviewList({
     if (check) {
       axios.post('/api/review/deleteReview', variables).then((response) => {
         if (response.data.deleteSuccess) {
-          console.log(response.data);
           deleteReview(response.data.review._id);
           message.success('감상평이 성공적으로 삭제되었습니다.');
         } else {
@@ -71,13 +70,16 @@ function MovieDetailReviewList({
   };
 
   const sortRegist = () => {
+    setReviewList('');
     loadReviewRegist();
   };
   const sortRating = () => {
+    setReviewList('');
     loadReviewRating();
   };
   const sortMy = () => {
     if (isLogin) {
+      setReviewList('');
       loadReviewMy();
     } else {
       message.warn('로그인이 필요합니다.');

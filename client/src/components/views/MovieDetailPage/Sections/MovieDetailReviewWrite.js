@@ -20,7 +20,6 @@ function MovieDetailReviewWrite(props) {
   useEffect(() => {
     axios.post('/api/review/getReviews', variables).then((response) => {
       if (response.data.success) {
-        console.log(response.data.comments);
         setReviewList(response.data.comments);
       } else {
         alert('감상평 리스트를 불러오는데 실패했습니다.');
@@ -41,7 +40,6 @@ function MovieDetailReviewWrite(props) {
   };
 
   const deleteReview = (deleteReviewId) => {
-    console.log(ReviewList);
     setReviewList(ReviewList.filter((review) => review._id !== deleteReviewId));
   };
 
@@ -95,7 +93,6 @@ function MovieDetailReviewWrite(props) {
   const loadReviewRegist = () => {
     axios.post('/api/review/getReviews', variables).then((response) => {
       if (response.data.success) {
-        console.log('등록순', response.data.comments);
         setReviewList(response.data.comments);
       } else {
         alert('감상평 리스트를 불러오는데 실패했습니다.');
@@ -105,7 +102,6 @@ function MovieDetailReviewWrite(props) {
   const loadReviewRating = () => {
     axios.post('/api/review/getReviewsRating', variables).then((response) => {
       if (response.data.success) {
-        console.log('평가순', response.data.comments);
         setReviewList(response.data.comments);
       } else {
         alert('감상평 리스트를 불러오는데 실패했습니다.');
@@ -115,7 +111,6 @@ function MovieDetailReviewWrite(props) {
   const loadReviewMy = () => {
     axios.post('/api/review/getReviewsMy', variables).then((response) => {
       if (response.data.success) {
-        console.log('내리뷰', response.data.comments);
         setReviewList(response.data.comments);
       } else {
         alert('감상평 리스트를 불러오는데 실패했습니다.');
@@ -153,6 +148,7 @@ function MovieDetailReviewWrite(props) {
         loadReviewRegist={loadReviewRegist}
         loadReviewRating={loadReviewRating}
         loadReviewMy={loadReviewMy}
+        setReviewList={setReviewList}
       />
     </div>
   );

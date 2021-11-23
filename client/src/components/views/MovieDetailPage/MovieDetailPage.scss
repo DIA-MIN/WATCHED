@@ -80,7 +80,8 @@
           width: 100%;
         }
 
-        .add-myPick-icon {
+        .add-myPick-icon-DetailTrailer {
+          font-size: 1.75rem;
           position: absolute;
           top: 1rem;
           right: 1rem;
@@ -446,6 +447,7 @@
               }
 
               button {
+                margin-top: 1.5rem;
                 border: 2px solid $mainColor;
                 color: $mainColor;
                 font-size: 1rem;
