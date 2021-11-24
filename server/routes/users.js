@@ -6,7 +6,7 @@ const {auth} = require('../middleware/auth');
 router.post('/checkuser', (req, res) => {
   User.findOne({email: req.body.email}).exec((err, user) => {
     if (err) return res.status(400).json({isUser: false, err});
-    res.status(200).json({isAuth: true, userData: user});
+    res.status(200).json({isUser: true, userData: user});
   });
 });
 

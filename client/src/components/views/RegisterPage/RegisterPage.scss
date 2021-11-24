@@ -68,7 +68,7 @@
   flex-direction: column;
   opacity: 0;
   transform: translateY(3rem);
-  animation: fadeInUp 2s ease 3s forwards;
+  animation: fadeInUp 2s ease 1s forwards;
   color: white;
   font-size: 1.25em;
 
@@ -79,12 +79,23 @@
   }
 
   div {
+    display: flex;
+    align-items: center;
+
     label {
+      padding: 0;
       margin-right: 7px;
     }
 
     input {
       width: 400px;
+    }
+
+    .eye-icon {
+      font-size: 1.25rem;
+      margin-left: -20px;
+      margin-right: 10px;
+      cursor: pointer;
     }
 
     button {

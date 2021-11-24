@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {Button, message} from 'antd';
+import {message} from 'antd';
 import './RegisterPage.scss';
 import moment from 'moment';
 import {useDispatch} from 'react-redux';
 import {registerUser} from '../../../_actions/user_action';
+import axios from 'axios';
+import {FaEye, FaEyeSlash} from 'react-icons/fa';
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ function RegisterPage(props) {
   const [EmailCheck, setEmailCheck] = useState(false);
   const [NameCheck, setNameCheck] = useState(false);
   const [PasswordCheck, setPasswordCheck] = useState(false);
+  const [IsPassVisible, setIsPassVisible] = useState(false);
 
   const onEmailHandler = (e) => {
     setEmail(e.currentTarget.value);
@@ -28,10 +31,28 @@ function RegisterPage(props) {
   };
 
   const onEmailCheck = () => {
+    const emailRule =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     if (Email === '') {
       message.warn('이메일을 다시 한번 확인해주세요.');
     } else {
-      setEmailCheck(true);
+      if (!emailRule.test(Email)) {
+        message.warn('올바른 이메일 형식이 아닙니다.');
+      } else {
+        axios.post('/api/users/checkuser', {email: Email}).then((response) => {
+          if (response.data.userData) {
+            message.warn('이미 등록된 이메일입니다.');
+          } else {
+            message.success('사용 가능한 이메일입니다.');
+            setTimeout(() => {
+              const check = window.confirm('해당 이메일로 가입하시겠습니까?');
+              if (check) {
+                setEmailCheck(true);
+              }
+            }, 1000);
+          }
+        });
+      }
     }
   };
 
@@ -44,10 +65,24 @@ function RegisterPage(props) {
   };
 
   const onPasswordCheck = () => {
+    const passRule =
+      /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
     if (Password === '') {
       message.warn('비밀번호를 다시 한번 확인해주세요.');
     } else {
-      setPasswordCheck(true);
+      if (!passRule.test(Password)) {
+        message.warn(
+          '비밀번호는 숫자와 문자 그리고 특수문자를 포함하여 8~15자리 이내로 입력해주세요.'
+        );
+      } else {
+        const check = window.confirm(
+          `사용할 비밀번호는 ${Password}이(가) 맞습니까?`
+        );
+        if (check) {
+          setPasswordCheck(true);
+        }
+      }
     }
   };
 
@@ -67,11 +102,15 @@ function RegisterPage(props) {
 
         setTimeout(() => {
           props.history.push('/login');
-        }, 2000);
+        }, 1000);
       } else {
         message.error('회원가입에 실패하셨습니다.');
       }
     });
+  };
+
+  const onClickEye = () => {
+    setIsPassVisible(!IsPassVisible);
   };
 
   const inputName = (
@@ -94,7 +133,16 @@ function RegisterPage(props) {
       <label>비밀번호를 입력해주세요.</label>
       <div>
         <label>→</label>
-        <input type="password" value={Password} onChange={onPasswordHandler} />
+        <input
+          type={IsPassVisible ? 'text' : 'password'}
+          value={Password}
+          onChange={onPasswordHandler}
+        />
+        {IsPassVisible ? (
+          <FaEye className="eye-icon" onClick={onClickEye} />
+        ) : (
+          <FaEyeSlash className="eye-icon" onClick={onClickEye} />
+        )}
         {PasswordCheck ? null : (
           <button type="button" onClick={onPasswordCheck}>
             다음
