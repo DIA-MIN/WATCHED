@@ -52,7 +52,7 @@ function MovieDetailPage(props) {
     <div className="movieDetailContent">
       <div className="movieDetail-main">
         <MovieDetailHead movie={Movie} />
-        <MovieDetailTrailer movie={Movie} trailer={Trailer} />
+        <MovieDetailTrailer movieId={movieId} movie={Movie} trailer={Trailer} />
         <MovieDetailInfo movie={Movie} />
 
         <div className="movieDetail-credits">

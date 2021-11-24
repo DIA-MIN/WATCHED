@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FaSearch, FaStar, FaHeart} from 'react-icons/fa';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
-import {Avatar} from 'antd';
+import {Avatar, message} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {API_URL, API_KEY} from './../../../Config';
 
@@ -28,21 +28,26 @@ function RightMenu(props) {
 
   const onSearchMovie = () => {
     const title = SearchMovie.replace(' ', '+');
-    fetch(
-      `${API_URL}search/movie?api_key=${API_KEY}&language=ko&query=${title}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        props.history.push({
-          pathname: '/search',
-          state: {
-            search: SearchMovie,
-            movie: res.results,
-          },
+
+    if (title === '') {
+      message.warn('영화 제목을 입력해주세요.');
+    } else {
+      fetch(
+        `${API_URL}search/movie?api_key=${API_KEY}&language=ko&query=${title}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          props.history.push({
+            pathname: '/search',
+            state: {
+              search: SearchMovie,
+              movie: res.results,
+            },
+          });
+          setSearchMovie('');
         });
-        setSearchMovie('');
-      });
+    }
   };
 
   if (user.userData && !user.userData.isAuth) {

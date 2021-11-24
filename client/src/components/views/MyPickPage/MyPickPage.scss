@@ -22,9 +22,18 @@
         padding: 3rem 0;
 
         span {
-          color: $mainColor;
+          color: $heartColor;
           font-size: 1.75rem;
           margin-right: 5px;
+        }
+
+        button {
+          margin-top: 1rem;
+          font-size: 1.5rem;
+          transition: 300ms ease-in;
+          &:hover {
+            color: $mainColor;
+          }
         }
       }
 
@@ -89,15 +98,25 @@
                 color: $bodyColor;
                 border-radius: 5px;
               }
+            }
 
-              .movieList-item-myPick {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .movieList-item-myPick {
+              display: flex;
+              justify-content: center;
+              align-items: center;
 
-                .plus-icon {
-                  margin-right: 5px;
-                }
+              .plus-icon {
+                margin-right: 5px;
+              }
+            }
+
+            .movieList-item-myPick.clamp {
+              background: $mainColor;
+              color: $bodyColor;
+              border-radius: 5px;
+
+              &:hover {
+                opacity: 0.7;
               }
             }
           }
@@ -124,7 +143,8 @@
         .myPick-notice {
           font-size: 1.25rem;
 
-          span {
+          span,
+          button {
             font-size: 1.5rem;
           }
         }
@@ -158,7 +178,8 @@
         .myPick-notice {
           font-size: 1rem;
 
-          span {
+          span,
+          button {
             font-size: 1.25rem;
           }
         }
@@ -192,7 +213,8 @@
         .myPick-notice {
           font-size: 14px;
 
-          span {
+          span,
+          button {
             font-size: 1rem;
           }
         }

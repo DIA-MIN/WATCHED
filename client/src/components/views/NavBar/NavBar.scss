@@ -100,7 +100,7 @@
         color: $navColor;
         cursor: pointer;
 
-        &:active {
+        &:hover {
           color: $mainColor;
         }
       }

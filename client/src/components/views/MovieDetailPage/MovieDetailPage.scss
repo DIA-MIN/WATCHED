@@ -80,7 +80,7 @@
           width: 100%;
         }
 
-        .add-myPick-icon-DetailTrailer {
+        .add-myPick-icon {
           font-size: 1.75rem;
           position: absolute;
           top: 1rem;
@@ -92,6 +92,10 @@
           &:hover {
             color: $heartColor;
           }
+        }
+
+        .add-myPick-icon.clamp {
+          color: $heartColor;
         }
       }
 

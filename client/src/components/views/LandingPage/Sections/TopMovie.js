@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '../LandingPage.scss';
 import {FaStar, FaHeart} from 'react-icons/fa';
 import {withRouter} from 'react-router-dom';
-import MoviePick from './MoviePick';
+import TopMoviePick from './TopMoviePick';
 
 function TopMovie(props) {
   const [Movies, setMovies] = useState([]);
@@ -39,9 +39,9 @@ function TopMovie(props) {
                   </div>
                 </div>
               </div>
-              <MoviePick
-                TopMovie
+              <TopMoviePick
                 movieId={movie.id}
+                movieTitle={movie.title}
                 movieRate={movie.vote_average}
                 moviePoster={movie.poster_path}
               />

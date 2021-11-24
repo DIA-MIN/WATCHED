@@ -25,9 +25,25 @@ router.post('/checkPick', (req, res) => {
   Favorite.findOne({userId: req.body.userId, movieId: req.body.movieId}).exec(
     (err, favorite) => {
       if (err) return res.status(400).json({success: false, err});
-      return res.status(200).json({success: true, favorite});
+
+      if (favorite !== null) {
+        return res
+          .status(200)
+          .json({success: true, favorite: favorite, isFavorite: true});
+      } else {
+        return res
+          .status(200)
+          .json({success: true, favorite: favorite, isFavorite: false});
+      }
     }
   );
+});
+
+router.post('/getPick', (req, res) => {
+  Favorite.find({userId: req.body.userId}).exec((err, favorite) => {
+    if (err) return res.status(400).json({success: false, err});
+    return res.status(200).json({success: true, favorite: favorite});
+  });
 });
 
 module.exports = router;

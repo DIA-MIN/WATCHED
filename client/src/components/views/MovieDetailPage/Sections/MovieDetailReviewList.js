@@ -71,6 +71,7 @@ function MovieDetailReviewList({
 
   const sortRegist = () => {
     setReviewList('');
+    console.log(reviewList.splice(0, 3));
     loadReviewRegist();
   };
   const sortRating = () => {

@@ -2,29 +2,24 @@ import React, {useEffect, useState} from 'react';
 import {FaPlus, FaHeart} from 'react-icons/fa';
 import axios from 'axios';
 import {message} from 'antd';
-import {useSelector} from 'react-redux';
 
-function MoviePick({TopMovie, movieId, movieRate, moviePoster, MovieChart}) {
-  const user = useSelector((state) => state.user);
+function TopMoviePick({movieId, movieRate, moviePoster, movieTitle}) {
   const userId = localStorage.getItem('user_id');
   const [IsFavorite, setIsFavorite] = useState(false);
 
   const variables = {
-    userId: userId,
-    movieId: movieId,
-    movieRate: movieRate,
-    moviePoster: moviePoster,
+    userId,
+    movieId,
+    movieRate,
+    moviePoster,
+    movieTitle,
   };
 
   useEffect(() => {
-    if (userId && user.loginSuccess.loginSuccess) {
+    if (userId) {
       axios.post('/api/favorite/checkPick', variables).then((response) => {
         if (response.data.success) {
-          if (response.data.favorite !== null) {
-            setIsFavorite(!IsFavorite);
-          } else {
-            setIsFavorite(false);
-          }
+          setIsFavorite(response.data.isFavorite);
         } else {
           alert('My Pick Check Fail...');
         }
@@ -33,7 +28,7 @@ function MoviePick({TopMovie, movieId, movieRate, moviePoster, MovieChart}) {
   }, []);
 
   const onClickMyPick = () => {
-    if (userId && user.loginSuccess.loginSuccess) {
+    if (userId) {
       if (IsFavorite) {
         axios.post('/api/favorite/unPickMovie', variables).then((response) => {
           if (response.data.pickDeleteSuccess) {
@@ -58,28 +53,14 @@ function MoviePick({TopMovie, movieId, movieRate, moviePoster, MovieChart}) {
     }
   };
 
-  if (TopMovie) {
-    return (
-      <div>
-        <FaHeart
-          className={IsFavorite ? 'add-myPick-icon clamp' : 'add-myPick-icon'}
-          onClick={onClickMyPick}
-        />
-      </div>
-    );
-  } else if (MovieChart) {
-    return (
-      <button
-        className={
-          IsFavorite ? 'movieList-item-myPick clamp' : 'movieList-item-myPick'
-        }
+  return (
+    <>
+      <FaHeart
+        className={IsFavorite ? 'add-myPick-icon clamp' : 'add-myPick-icon'}
         onClick={onClickMyPick}
-      >
-        <FaPlus className="plus-icon" />
-        My Pick
-      </button>
-    );
-  }
+      />
+    </>
+  );
 }
 
-export default MoviePick;
+export default TopMoviePick;

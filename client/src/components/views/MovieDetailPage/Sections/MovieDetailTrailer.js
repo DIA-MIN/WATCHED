@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FaHeart} from 'react-icons/fa';
 import {IMAGE_BASE_URL} from '../../../Config';
+import TopMoviePick from '../../LandingPage/Sections/TopMoviePick';
 
-function MovieDetailTrailer({movie, trailer}) {
+function MovieDetailTrailer({movie, trailer, movieId}) {
   return (
     <div className="movieDetail-view">
       <div>
         <img src={`${IMAGE_BASE_URL}w500${movie.poster_path}`} />
-        <FaHeart className="add-myPick-icon-DetailTrailer" />
+        {/* <FaHeart className="add-myPick-icon-DetailTrailer" /> */}
+        <TopMoviePick
+          movieId={movieId}
+          movieRate={movie.vote_average}
+          moviePoster={movie.poster_path}
+        />
       </div>
       <iframe
         width="100%"

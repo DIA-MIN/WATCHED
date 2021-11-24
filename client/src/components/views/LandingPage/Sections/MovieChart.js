@@ -3,7 +3,7 @@ import {FaStar, FaPlus} from 'react-icons/fa';
 import {API_KEY, API_URL, IMAGE_BASE_URL} from '../../../Config';
 import Pagenation from 'react-js-pagination';
 import {withRouter} from 'react-router-dom';
-import MoviePick from './MoviePick';
+import MovieChartPick from './MovieChartPick';
 
 function MovieChart(props, {movies}) {
   const [CategoryMovies, setCategoryMovies] = useState([]);
@@ -80,9 +80,9 @@ function MovieChart(props, {movies}) {
                   <FaStar className="star-icon" />
                   {movie.vote_average}
                 </div>
-                <MoviePick
-                  MovieChart
+                <MovieChartPick
                   movieId={movie.id}
+                  movieTitle={movie.title}
                   movieRate={movie.vote_average}
                   moviePoster={movie.poster_path}
                 />
