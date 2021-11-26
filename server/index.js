@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors');
 
 const cookieParser = require('cookie-parser');
 
@@ -12,6 +13,7 @@ mongoose
   .then(() => console.log('MongoDB Connected :)'))
   .catch((err) => console.log(err));
 
+app.use(cors());
 // support parsing of application/x-www-form-urlencoded post data
 app.use(express.urlencoded({extended: true}));
 
