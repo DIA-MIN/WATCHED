@@ -3,7 +3,6 @@ import './LoginPage.scss';
 import {jsKey} from './../../Config';
 import {useDispatch} from 'react-redux';
 import {registerUser, loginKakaoUser} from '../../../_actions/user_action';
-// import {withRouter} from 'react-router-dom';
 
 const {Kakao} = window;
 
@@ -22,9 +21,6 @@ function KaKaoLogin(props) {
     Kakao.Auth.login({
       scope,
       success: (res) => {
-        // console.log('token?', res);
-        // Kakao.Auth.setAccessToken(res.access_token);
-
         Kakao.API.request({
           url: '/v2/user/me',
           success: (res) => {
@@ -65,9 +61,6 @@ function KaKaoLogin(props) {
 
   return (
     <div>
-      {/* <a className="kakaoLoginBtn" href={KAKAO_AUTH_URL}>
-        카카오 로그인
-      </a> */}
       <a id="custom-login-btn" onClick={loginWithKakao}>
         <img
           src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
@@ -78,5 +71,4 @@ function KaKaoLogin(props) {
   );
 }
 
-// export default withRouter(KaKaoLogin);
 export default KaKaoLogin;

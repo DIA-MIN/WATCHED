@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import axios from 'axios';
 import {message} from 'antd';
-import {withRouter} from 'react-router-dom';
 import MovieRating from '../../commons/MovieRating';
 import MovieDetailReviewList from './MovieDetailReviewList';
 
@@ -154,4 +153,4 @@ function MovieDetailReviewWrite(props) {
   );
 }
 
-export default withRouter(MovieDetailReviewWrite);
+export default MovieDetailReviewWrite;
