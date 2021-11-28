@@ -100,24 +100,18 @@ function MovieDetailReviewList({
             reviewList.map((review, index) => (
               <li key={index}>
                 <div className="review-profile-container">
-                  <Avatar
+                  <img
                     className="review-profile-img"
-                    shape="square"
-                    size={48}
                     src={review.writer.image}
                     alt="profileimg"
                   />
                   <div className="review-profile-info">
-                    <MovieRating
-                      // refreshRateValue={refreshRateValue}
-                      rateId={'review-stars'}
-                      rateValue={String(review.rate)}
-                    />
-                    <div className="review-name">
-                      <div>{review.writer.name}</div>
-                      <div>
-                        <span>{review.date}</span>
-                      </div>
+                    <div className="review-rating">
+                      <MovieRating
+                        // refreshRateValue={refreshRateValue}
+                        rateId={'review-stars'}
+                        rateValue={String(review.rate)}
+                      />
                       {writer === review.writer._id ? (
                         <div>
                           <button
@@ -130,6 +124,12 @@ function MovieDetailReviewList({
                           </button>
                         </div>
                       ) : null}
+                    </div>
+                    <div className="review-name">
+                      <div>{review.writer.name}</div>
+                      <div>
+                        <span>{review.date}</span>
+                      </div>
                     </div>
                   </div>
                 </div>

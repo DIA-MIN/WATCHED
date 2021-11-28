@@ -17,7 +17,7 @@ function NavBar(props) {
         WATCHED
       </div>
 
-      <RightMenu isClicked={Clicked} />
+      <RightMenu isClicked={Clicked} setClicked={setClicked} />
 
       <div className="menu" onClick={onClickHandle}>
         {Clicked ? (

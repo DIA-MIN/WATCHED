@@ -577,6 +577,28 @@
 @media screen and(max-width: 500px) {
   .LandingContainer {
     padding: 8px;
+
+    .movieContent {
+      .movieList {
+        .movieList-item {
+          .movieList-item-info {
+            h3 {
+              font-size: 13px;
+            }
+
+            .top-movie-rate {
+              font-size: 12px;
+            }
+
+            button {
+              font-size: 10px;
+              padding: 6px 10px;
+            }
+          }
+        }
+      }
+    }
+
     .trailerContent {
       h1 {
         font-size: 1.5rem;

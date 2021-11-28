@@ -14,7 +14,7 @@ function RightMenu(props) {
     axios.get('/api/users/logout').then((response) => {
       if (response.data.success) {
         localStorage.clear();
-
+        props.setClicked(false);
         props.history.push('/login');
       } else {
         alert('로그아웃에 실패하셨습니다.');
@@ -37,7 +37,6 @@ function RightMenu(props) {
       )
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           props.history.push({
             pathname: '/search',
             state: {
@@ -45,6 +44,7 @@ function RightMenu(props) {
               movie: res.results,
             },
           });
+          props.setClicked(false);
           setSearchMovie('');
         });
     }
@@ -62,6 +62,7 @@ function RightMenu(props) {
         <li
           onClick={() => {
             props.history.push('/login');
+            props.setClicked(false);
           }}
         >
           로그인
@@ -69,6 +70,7 @@ function RightMenu(props) {
         <li
           onClick={() => {
             props.history.push('/register');
+            props.setClicked(false);
           }}
         >
           회원가입
@@ -86,7 +88,10 @@ function RightMenu(props) {
         </li>
         <li
           className="pickContent"
-          onClick={() => props.history.push('/mypick')}
+          onClick={() => {
+            props.history.push('/mypick');
+            props.setClicked(false);
+          }}
         >
           <FaHeart className="heart-icon" />
           My Pick

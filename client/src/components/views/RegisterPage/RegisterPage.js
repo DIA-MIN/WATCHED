@@ -115,22 +115,26 @@ function RegisterPage(props) {
 
   const inputName = (
     <>
-      <label>사용자 이름을 입력해주세요.</label>
+      <div>
+        <label>사용자 이름을 입력해주세요.</label>
+      </div>
       <div>
         <label>→</label>
         <input type="text" value={Name} onChange={onNameHandler} />
-        {NameCheck ? null : (
-          <button type="button" onClick={onNameCheck}>
-            다음
-          </button>
-        )}
       </div>
+      {NameCheck ? null : (
+        <button type="button" onClick={onNameCheck}>
+          다음
+        </button>
+      )}
     </>
   );
 
   const inputPassword = (
     <>
-      <label>비밀번호를 입력해주세요.</label>
+      <div>
+        <label>비밀번호를 입력해주세요.</label>
+      </div>
       <div>
         <label>→</label>
         <input
@@ -143,12 +147,12 @@ function RegisterPage(props) {
         ) : (
           <FaEyeSlash className="eye-icon" onClick={onClickEye} />
         )}
-        {PasswordCheck ? null : (
-          <button type="button" onClick={onPasswordCheck}>
-            다음
-          </button>
-        )}
       </div>
+      {PasswordCheck ? null : (
+        <button type="button" onClick={onPasswordCheck}>
+          다음
+        </button>
+      )}
     </>
   );
 
@@ -162,26 +166,34 @@ function RegisterPage(props) {
 
   return (
     <div className="registerContent">
-      <h1 className="registerTitle" style={{color: 'white'}}>
-        <span>WATCHED</span>에 가입하고 영화를 평가해 보세요.
-      </h1>
-      <br />
-      <p className="registerSubtitle">Welcome to WATCHED!</p>
-      <form onSubmit={onSubmitForm}>
-        <label>이메일을 입력해주세요.</label>
-        <div>
-          <label>→</label>
-          <input type="email" value={Email} onChange={onEmailHandler} />
-          {EmailCheck ? null : (
-            <button type="button" onClick={onEmailCheck}>
-              다음
-            </button>
-          )}
-        </div>
-        {EmailCheck ? inputName : null}
-        {NameCheck ? inputPassword : null}
-        {PasswordCheck ? register : null}
-      </form>
+      <div className="register-container">
+        <h1 className="registerTitle" style={{color: 'white'}}>
+          <span>WATCHED</span>에 가입하고 영화를 평가해 보세요.
+        </h1>
+        <br />
+        <p className="registerSubtitle">Welcome to WATCHED!</p>
+        <form onSubmit={onSubmitForm}>
+          <ul>
+            <li>
+              <div>
+                <label>이메일을 입력해주세요.</label>
+              </div>
+              <div>
+                <label>→</label>
+                <input type="email" value={Email} onChange={onEmailHandler} />
+              </div>
+              {EmailCheck ? null : (
+                <button type="button" onClick={onEmailCheck}>
+                  다음
+                </button>
+              )}
+            </li>
+            <li>{EmailCheck ? inputName : null}</li>
+            <li>{NameCheck ? inputPassword : null}</li>
+            <li>{PasswordCheck ? register : null}</li>
+          </ul>
+        </form>
+      </div>
     </div>
   );
 }

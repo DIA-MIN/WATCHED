@@ -57,7 +57,9 @@ function MovieDetailPage(props) {
 
         <div className="movieDetail-credits">
           <h1 className="category">
-            <div className="ColBar"></div>출연
+            <div>
+              <div className="ColBar"></div>출연
+            </div>
             <button className="clamp-cast" onClick={onClampCast}>
               자세히 {IsClamp ? <FaAngleDown /> : <FaAngleRight />}
             </button>

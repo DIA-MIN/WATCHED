@@ -33,7 +33,7 @@ function LoginPage(props) {
         localStorage.setItem('user_id', response.payload.userId);
         props.history.push('/');
       } else {
-        message.error('로그인에 실패하셨습니다.');
+        message.error('아이디 또는 비밀번호를 다시 확인해주세요.');
       }
     });
   };
