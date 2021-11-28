@@ -58,7 +58,9 @@ function MyPickPage(props) {
                         refreshUnPick={refreshUnPick}
                       />
                       <button
-                        onClick={() => props.history.push(`/movie/${movie.id}`)}
+                        onClick={() => {
+                          props.history.push(`/movie/${movie.movieId}`);
+                        }}
                       >
                         자세히
                       </button>
