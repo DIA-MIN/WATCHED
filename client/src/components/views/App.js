@@ -14,7 +14,24 @@ const MyPickPage = lazy(() => import('./MyPickPage/MyPickPage'));
 function App() {
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div
+            style={{
+              height: '100vh',
+              background: 'black',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              color: '#fdd835',
+              fontWeight: 'bold',
+              fontSize: '1.5rem',
+            }}
+          >
+            Loading WATCHED
+          </div>
+        }
+      >
         <NavBar />
         <div>
           <Switch>
