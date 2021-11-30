@@ -4,7 +4,6 @@ import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_action';
 import {message} from 'antd';
 import KaKaoLogin from './KaKaoLogin';
-import {withRouter} from 'react-router-dom';
 
 function LoginPage(props) {
   const dispatch = useDispatch();

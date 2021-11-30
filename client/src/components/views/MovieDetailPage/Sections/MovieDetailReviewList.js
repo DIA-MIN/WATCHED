@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Avatar, message} from 'antd';
+import React, {useState} from 'react';
+import {message} from 'antd';
 import axios from 'axios';
 import MovieRating from '../../commons/MovieRating';
 import Recommend from './Recommend';

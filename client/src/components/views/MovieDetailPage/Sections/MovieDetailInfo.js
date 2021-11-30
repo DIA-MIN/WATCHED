@@ -1,12 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function MovieDetailInfo({movie}) {
-  const [IsClamp, setIsClamp] = useState(false);
-
-  const onClickHandler = () => {
-    setIsClamp(!IsClamp);
-  };
-
   return (
     <ul className="movieDetail-info">
       <li className="movieDetail-genre">

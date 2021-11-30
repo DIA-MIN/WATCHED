@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {FaHeart} from 'react-icons/fa';
+import React from 'react';
 import {IMAGE_BASE_URL} from '../../../Config';
 import TopMoviePick from '../../LandingPage/Sections/TopMoviePick';
 

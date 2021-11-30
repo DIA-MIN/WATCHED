@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {FaPlus, FaHeart} from 'react-icons/fa';
+import React from 'react';
+import {FaPlus} from 'react-icons/fa';
 import axios from 'axios';
 import {message} from 'antd';
 import {useSelector} from 'react-redux';

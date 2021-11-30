@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../LandingPage.scss';
-import {FaStar, FaHeart} from 'react-icons/fa';
+import {FaStar} from 'react-icons/fa';
 import {withRouter} from 'react-router-dom';
 import TopMoviePick from './TopMoviePick';
 

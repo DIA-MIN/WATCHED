@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FaStar, FaPlus} from 'react-icons/fa';
+import {FaStar} from 'react-icons/fa';
 import {API_KEY, API_URL, IMAGE_BASE_URL} from '../../../Config';
 import Pagenation from 'react-js-pagination';
 import {withRouter} from 'react-router-dom';

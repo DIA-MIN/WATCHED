@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {API_KEY, API_URL, IMAGE_BASE_URL} from './../../Config';
+import {API_KEY, API_URL} from './../../Config';
 import './LandingPage.scss';
 import MovieTrailer from './Sections/MovieTrailer';
 import TopMovie from './Sections/TopMovie';

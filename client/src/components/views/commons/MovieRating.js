@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 function MovieRating({refreshRateValue, rateId, rateValue}) {
   const [RateScore, setRateScore] = useState(['5', '4', '3', '2', '1']);

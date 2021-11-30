@@ -7,15 +7,6 @@ import {withRouter} from 'react-router-dom';
 
 function SearchResultPage(props) {
   const location = useLocation();
-  const [Movies, setMovies] = useState([]);
-  const [SearchMovieTitle, setSearchMovieTitle] = useState('');
-
-  useEffect(() => {
-    console.log('검색 결과 =>', location.state.movie);
-    console.log('검색 제목 =>', location.state.search);
-    // setMovies(location.state.results);
-    // setSearchMovieTitle(location.state.search);
-  }, []);
 
   if (location.state.movie.length > 0) {
     return (
@@ -62,7 +53,8 @@ function SearchResultPage(props) {
         <div className="searchResult-main">
           <div className="searchMovie-container">
             <div className="searchResult-notice">
-              <span>"{SearchMovieTitle}"</span>(와)과 일치하는 결과가 없습니다.
+              <span>"{location.state.search}"</span>(와)과 일치하는 결과가
+              없습니다.
             </div>
           </div>
         </div>

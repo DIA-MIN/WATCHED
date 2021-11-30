@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './MyPickPage.scss';
 import axios from 'axios';
-import {FaPlus, FaStar} from 'react-icons/fa';
+import {FaStar} from 'react-icons/fa';
 import {IMAGE_BASE_URL} from './../../Config';
 import MovieChartPick from '../LandingPage/Sections/MovieChartPick';
 import {withRouter} from 'react-router-dom';

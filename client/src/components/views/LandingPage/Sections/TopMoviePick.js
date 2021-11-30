@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FaPlus, FaHeart} from 'react-icons/fa';
+import {FaHeart} from 'react-icons/fa';
 import axios from 'axios';
 import {message} from 'antd';
 
@@ -50,6 +50,7 @@ function TopMoviePick({movieId, movieRate, moviePoster, movieTitle}) {
       }
     } else {
       message.warn('로그인 후 이용 가능합니다.');
+      setIsFavorite(false);
     }
   };
 

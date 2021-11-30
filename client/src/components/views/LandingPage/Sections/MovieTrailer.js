@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Row, Col, Carousel} from 'antd';
+import {Carousel} from 'antd';
 import {IMAGE_BASE_URL, API_URL, API_KEY} from './../../../Config';
 import TrailerPoster from './TrailerPoster';
 import Modal from './Modal';
