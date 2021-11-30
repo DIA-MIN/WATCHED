@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './components/views/App';
 import reportWebVitals from './reportWebVitals';
-import 'antd/dist/antd.css';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import promiseMidleware from 'redux-promise';
