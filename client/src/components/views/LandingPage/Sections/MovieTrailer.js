@@ -41,7 +41,6 @@ function MovieTrailer(props) {
           res.results.filter(
             (list) =>
               list.name.includes('Trailer') || list.name.includes('Teaser')
-            // list.name.includes('예고편') || list.name.includes('1차 예고편')
           )[0].key
         );
       });

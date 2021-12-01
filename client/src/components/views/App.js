@@ -1,35 +1,21 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, lazy} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Auth from '../../hoc/auth';
-import RegisterPage from './RegisterPage/RegisterPage';
-import LandingPage from './LandingPage/LandingPage';
-import LoginPage from './LoginPage/LoginPage';
-import NavBar from './NavBar/NavBar';
-import MovieDetailPage from './MovieDetailPage/MovieDetailPage';
-import SearchResultPage from './SearchResultPage/SearchResultPage';
-import MyPickPage from './MyPickPage/MyPickPage';
+import Loader from './commons/Loader';
+const RegisterPage = lazy(() => import('./RegisterPage/RegisterPage'));
+const LandingPage = lazy(() => import('./LandingPage/LandingPage'));
+const LoginPage = lazy(() => import('./LoginPage/LoginPage'));
+const NavBar = lazy(() => import('./NavBar/NavBar'));
+const MovieDetailPage = lazy(() => import('./MovieDetailPage/MovieDetailPage'));
+const SearchResultPage = lazy(() =>
+  import('./SearchResultPage/SearchResultPage')
+);
+const MyPickPage = lazy(() => import('./MyPickPage/MyPickPage'));
 
 function App() {
   return (
     <Router>
-      <Suspense
-        fallback={
-          <div
-            style={{
-              height: '100vh',
-              background: 'black',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              color: '#fdd835',
-              fontWeight: 'bold',
-              fontSize: '1.5rem',
-            }}
-          >
-            Loading WATCHED
-          </div>
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <NavBar />
         <div>
           <Switch>

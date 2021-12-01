@@ -73,7 +73,7 @@ function MovieChart(props, {movies}) {
         {CategoryMovies &&
           CategoryMovies.map((movie, index) => (
             <div className="movieList-item" key={index}>
-              <img src={`${IMAGE_BASE_URL}w500${movie.poster_path}`} />
+              <img src={`${IMAGE_BASE_URL}w342${movie.poster_path}`} />
               <div className="movieList-item-info">
                 <h3>{movie.title}</h3>
                 <div className="top-movie-rate">

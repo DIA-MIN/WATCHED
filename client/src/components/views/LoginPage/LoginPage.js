@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, Suspense, lazy} from 'react';
 import './LoginPage.scss';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_action';
 import {message} from 'antd';
-import KaKaoLogin from './KaKaoLogin';
+// import KaKaoLogin from './KaKaoLogin';
+const KaKaoLogin = lazy(() => import('./KaKaoLogin'));
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -51,7 +52,9 @@ function LoginPage(props) {
 
         <button onSubmit={onSubmitForm}>로그인</button>
       </form>
-      <KaKaoLogin {...props} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <KaKaoLogin {...props} />
+      </Suspense>
     </div>
   );
 }
