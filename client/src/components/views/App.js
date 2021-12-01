@@ -11,6 +11,7 @@ const SearchResultPage = lazy(() =>
   import('./SearchResultPage/SearchResultPage')
 );
 const MyPickPage = lazy(() => import('./MyPickPage/MyPickPage'));
+const Footer = lazy(() => import('./Footer/Footer'));
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="/mypick" component={Auth(MyPickPage, true)} />
           </Switch>
         </div>
+        <Footer />
       </Suspense>
     </Router>
   );

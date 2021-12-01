@@ -90,18 +90,19 @@
         color: $bodyColor;
       }
 
-      .search-icon {
+      button {
         background: white;
-        font-size: 2rem;
         padding-right: 10px;
         height: 30px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-        color: $navColor;
-        cursor: pointer;
-
-        &:hover {
-          color: $mainColor;
+        .search-icon {
+          height: 100%;
+          color: $navColor;
+          font-size: 1.25rem;
+          &:hover {
+            color: $mainColor;
+          }
         }
       }
     }

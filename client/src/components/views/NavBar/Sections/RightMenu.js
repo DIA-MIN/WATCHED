@@ -50,13 +50,20 @@ function RightMenu(props) {
     }
   };
 
+  const onSubmitSearch = (e) => {
+    e.preventDefault();
+    onSearchMovie();
+  };
+
   if (user.userData && !user.userData.isAuth) {
     return (
       <ul className={props.isClicked ? 'nav-menu active' : 'nav-menu'}>
         <li>
-          <form className="search">
+          <form className="search" onSubmit={onSubmitSearch}>
             <input value={SearchMovie} onChange={onChangeSearch} />
-            <FaSearch className="search-icon" onClick={onSearchMovie} />
+            <button onSubmit={onSubmitSearch}>
+              <FaSearch className="search-icon" />
+            </button>
           </form>
         </li>
         <li
@@ -81,9 +88,11 @@ function RightMenu(props) {
     return (
       <ul className={props.isClicked ? 'nav-menu active' : 'nav-menu'}>
         <li>
-          <form className="search">
+          <form className="search" onSubmit={onSubmitSearch}>
             <input value={SearchMovie} onChange={onChangeSearch} />
-            <FaSearch className="search-icon" onClick={onSearchMovie} />
+            <button onSubmit={onSubmitSearch}>
+              <FaSearch className="search-icon" />
+            </button>
           </form>
         </li>
         <li
