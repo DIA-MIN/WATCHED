@@ -1,15 +1,6 @@
-import React, {Suspense, lazy} from 'react';
+import React, {Suspense} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Auth from '../../hoc/auth';
-// const RegisterPage = lazy(() => import('./RegisterPage/RegisterPage'));
-// const LandingPage = lazy(() => import('./LandingPage/LandingPage'));
-// const LoginPage = lazy(() => import('./LoginPage/LoginPage'));
-// const NavBar = lazy(() => import('./NavBar/NavBar'));
-// const MovieDetailPage = lazy(() => import('./MovieDetailPage/MovieDetailPage'));
-// const SearchResultPage = lazy(() =>
-//   import('./SearchResultPage/SearchResultPage')
-// );
-// const MyPickPage = lazy(() => import('./MyPickPage/MyPickPage'));
 import RegisterPage from './RegisterPage/RegisterPage';
 import LandingPage from './LandingPage/LandingPage';
 import LoginPage from './LoginPage/LoginPage';
