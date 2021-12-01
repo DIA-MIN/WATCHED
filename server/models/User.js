@@ -62,9 +62,6 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
 
 userSchema.methods.generateToken = function (cb) {
   const user = this;
-  // console.log(`generateToken user ==> ${user}`);
-  // console.log(`userSchema ${userSchema}`);
-
   const token = jwt.sign(user._id.toHexString(), 'secretToken');
   const oneHour = moment().add(1, 'hour').valueOf();
   // moment().unix() => 초 단위의 값, .valueOf() => 밀리 세컨드 값 반환

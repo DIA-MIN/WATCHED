@@ -71,7 +71,6 @@ function MovieDetailReviewList({
 
   const sortRegist = () => {
     setReviewList('');
-    console.log(reviewList.splice(0, 3));
     loadReviewRegist();
   };
   const sortRating = () => {
@@ -108,7 +107,6 @@ function MovieDetailReviewList({
                   <div className="review-profile-info">
                     <div className="review-rating">
                       <MovieRating
-                        // refreshRateValue={refreshRateValue}
                         rateId={'review-stars'}
                         rateValue={String(review.rate)}
                       />

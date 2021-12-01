@@ -14,7 +14,6 @@ function MovieTrailer(props) {
 
   useEffect(() => {
     const movies = props.movies;
-    // console.log(movies);
     const trailer = [];
     let endpoint = [];
     for (let i = 0; i < 5; i++) {

@@ -13,7 +13,6 @@ function KaKaoLogin(props) {
   useEffect(() => {
     if (!Kakao.isInitialized()) {
       Kakao.init(jsKey);
-      console.log(Kakao.isInitialized());
     }
   }, []);
 

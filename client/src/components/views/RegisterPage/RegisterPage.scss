@@ -82,12 +82,16 @@
             align-items: center;
 
             label {
+              color: $mainColor;
+              font-size: 1.5rem;
               padding: 0;
               margin-right: 7px;
             }
 
             input {
               width: 100%;
+              padding: 4px 0;
+              border-bottom: 1px solid $mainColor;
             }
           }
           .eye-icon {
@@ -104,7 +108,7 @@
             border-radius: 5px;
             font-weight: bold;
             transition: 1000ms ease;
-            margin-top: 10px;
+            margin-top: 1rem;
 
             &:hover {
               background: $mainColor;

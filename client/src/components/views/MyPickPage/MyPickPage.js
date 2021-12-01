@@ -17,7 +17,6 @@ function MyPickPage(props) {
 
     axios.post('api/favorite/getPick', variables).then((response) => {
       if (response.data.success) {
-        console.log(response.data);
         setMovie(response.data.favorite);
       } else {
         alert('My Pick 리스트를 불러오는데 실패했습니다.');
