@@ -3,9 +3,9 @@ import './Footer.scss';
 
 function Footer() {
   return (
-    <footer className="Footer">
+    <div className="Footer">
       Copyright ⓒ 2021 Park Min Seok. All Rights Reserved.
-    </footer>
+    </div>
   );
 }
 
