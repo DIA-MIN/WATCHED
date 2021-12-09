@@ -605,6 +605,23 @@
         font-weight: bold;
       }
 
+      .trailer_modal_contaier {
+        .trailer_modal {
+          width: 330px;
+          height: 400px;
+
+          .modal_overview {
+            font-size: 12px;
+            overflow: scroll;
+          }
+
+          h1,
+          .modal_close_btn {
+            font-size: 1rem;
+          }
+        }
+      }
+
       .trailer-card {
         .trailer-poster {
           .trailer-title {
