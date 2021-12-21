@@ -160,7 +160,15 @@ function MovieDetailReviewList({
       </div>
     );
   } else {
-    return null;
+    return (
+      <div className="MovieDetail-reviewList">
+        <ul className="review-sorting">
+          <li onClick={sortRegist}>등록순</li>
+          <li onClick={sortRating}>평점순</li>
+          <li onClick={sortMy}>MY</li>
+        </ul>
+      </div>
+    );
   }
 }
 
