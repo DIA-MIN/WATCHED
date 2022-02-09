@@ -6,10 +6,10 @@
 
 <h3 align="center">
   
-<div> WATCHED 구경하기👇</div></br>
+<div>WATCHED 둘러보기</div></br>
   
 <div>
-  <a href="http://watched.devdiamin.com/"> http://watched.devdiamin.com/ </a> 
+  <a href="http://watched.devdiamin.com/">👉 http://watched.devdiamin.com/ 👈</a> 
 </div>
   
 </h3>
