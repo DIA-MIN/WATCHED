@@ -27,8 +27,10 @@
 
 최신 영화 정보를 실시간으로 확인 가능하며, 꾸밈없는 그리고 조작 없는 영화 감상 커뮤니티가 존재하면 좋지 않을까?
 
-## WATCHED
+## Stack
 
-| 로그인 페이지 | 메인 페이지 | 영화 상세 페이지 |
-|:---:|:---:|:---:|
-| 좋아요 페이지 | 
+---
+
+- **Front-End** : React, Redux, Sass
+- **Back-End** : Express, MongoDB
+- **Deployment** : GitHub, AWS(EC2, Route 53)
