@@ -6,7 +6,7 @@
 
 <h3 align="center">
   
-<img width="500" height="380" src=https://user-images.githubusercontent.com/42745614/153139255-e14535f6-ef3e-4c25-baeb-012f5eb74d93.gif></br>
+<img width="500" height="380" src=https://user-images.githubusercontent.com/42745614/153751940-31a04b32-8d11-410d-a1a2-64de4ca1938b.gif></br>
   
   
 <div>WATCHED 둘러보기</div></br>
