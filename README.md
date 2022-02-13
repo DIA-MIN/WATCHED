@@ -31,9 +31,9 @@
 
 | 메인 페이지 | 영화 상세 페이지 | 영화 조회 |
 |:---:|:---:|:---:|
-| <img src=https://user-images.githubusercontent.com/42745614/153750791-653d66d8-0ee8-4c19-8cad-f18cffffb87e.gif> | <img src=https://user-images.githubusercontent.com/42745614/153750839-ef1bb5e9-50fd-4c95-ba46-8a3867e975de.gif > | <img src=https://user-images.githubusercontent.com/42745614/153750863-8c133252-ac6f-4352-b64a-bc039c9a5b1f.gif > |
+| <img src=https://user-images.githubusercontent.com/42745614/153751940-31a04b32-8d11-410d-a1a2-64de4ca1938b.gif> | <img src=https://user-images.githubusercontent.com/42745614/153752079-0ac30dab-2222-4ca3-92e4-3f0b27edac28.gif > | <img src=https://user-images.githubusercontent.com/42745614/153750863-8c133252-ac6f-4352-b64a-bc039c9a5b1f.gif > |
 | 소셜 로그인 | 댓글 등록 | My Pick |
-| <img src=https://user-images.githubusercontent.com/42745614/153750884-c33563af-9220-4fe5-9f28-1bee47ec6364.gif > | <img src=https://user-images.githubusercontent.com/42745614/153750902-12af025c-3ec7-43f8-94b4-7058d89dbd63.gif > | <img src=https://user-images.githubusercontent.com/42745614/153750910-2b1f0fb0-bf3b-41fa-8424-b4a171213e5a.gif > |
+| <img src=https://user-images.githubusercontent.com/42745614/153751985-9e649c95-0bcc-4b63-ae04-075a1ae264c3.gif > | <img src=https://user-images.githubusercontent.com/42745614/153750902-12af025c-3ec7-43f8-94b4-7058d89dbd63.gif > | <img src=https://user-images.githubusercontent.com/42745614/153750910-2b1f0fb0-bf3b-41fa-8424-b4a171213e5a.gif > |
 
 ## ⚙️ Stack
 
